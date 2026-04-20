@@ -15,7 +15,7 @@ export default function Contact() {
             href={l.href}
             target={l.href.startsWith("http") ? "_blank" : undefined}
             rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
-            className="flex items-center justify-between py-4 px-1 rounded-xl hover:bg-[color:var(--color-surface)]/60 transition-colors group"
+            className="press flex items-center justify-between py-4 px-1 rounded-xl hover:bg-[color:var(--color-surface)]/60 transition-colors group"
           >
             <span className="text-xs tracking-[0.3em] uppercase text-[color:var(--color-muted)]">
               {l.label}

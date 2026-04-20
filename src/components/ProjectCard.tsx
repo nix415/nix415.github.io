@@ -38,9 +38,9 @@ const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
           if (!e.defaultPrevented) openLink();
         }}
         className={cn(
-          "group relative flex cursor-pointer flex-col overflow-hidden rounded-xl",
+          "group relative flex cursor-pointer flex-col overflow-hidden rounded-xl press",
           "border border-[color:var(--color-line)] bg-[color:var(--color-surface)] shadow-sm",
-          "transition-all duration-500 ease-in-out hover:-translate-y-1 hover:shadow-md",
+          "transition-[transform,box-shadow] duration-500 ease-in-out hover:-translate-y-1 hover:shadow-md",
           className,
         )}
         {...props}
@@ -68,7 +68,7 @@ const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="group/button inline-flex items-center gap-1.5 font-medium text-[color:var(--color-accent)] transition-all duration-300 hover:underline"
+              className="group/button press inline-flex items-center gap-1.5 font-medium text-[color:var(--color-accent)] transition-all duration-300 hover:underline"
             >
               {linkText}
               <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/button:translate-x-1" />

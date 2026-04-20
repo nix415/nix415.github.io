@@ -14,7 +14,7 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-30 backdrop-blur bg-[color:var(--color-bg)]/80">
       <div className="mx-auto max-w-6xl px-6 py-5 flex items-center justify-between">
-        <a href="#home" className="display text-xl tracking-tight">
+        <a href="#home" className="display text-xl tracking-tight press">
           {SITE.name}
         </a>
         <nav className="flex items-center gap-6 text-sm">
@@ -25,7 +25,7 @@ export default function Header() {
               <a
                 key={item}
                 href={`#${id}`}
-                className={`relative transition-colors ${
+                className={`relative press transition-colors ${
                   isActive
                     ? "text-[color:var(--color-ink)] font-medium"
                     : "text-[color:var(--color-muted)] hover:text-[color:var(--color-ink)]"

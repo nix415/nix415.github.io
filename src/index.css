@@ -38,7 +38,8 @@ body {
   letter-spacing: -0.02em;
 }
 
-/* Scroll-reveal: sections start hidden, fade up when seen */
+/* ── Scroll-reveal ──────────────────────────────────────────── */
+
 .reveal {
   opacity: 0;
   transform: translateY(16px);
@@ -53,13 +54,79 @@ body {
   transform: none;
 }
 
+/* Stagger: children inside a `.is-visible` parent fade up with delay.
+   Delay comes from inline `--stagger-delay`. */
+.stagger-item {
+  opacity: 0;
+  transform: translateY(10px);
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--stagger-delay, 0ms);
+  will-change: opacity, transform;
+}
+
+.is-visible .stagger-item {
+  opacity: 1;
+  transform: none;
+}
+
+/* ── Hero entrance on load ──────────────────────────────────── */
+
+@keyframes hero-rise-in {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.hero-rise {
+  animation: hero-rise-in 0.7s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation-delay: var(--hero-delay, 0ms);
+}
+
+/* ── Image fade-in once loaded ──────────────────────────────── */
+
+.image-fade {
+  opacity: 0;
+  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.image-fade.is-loaded {
+  opacity: 0.9;
+}
+
+/* ── Press feedback ─────────────────────────────────────────── */
+
+.press {
+  transition: transform 120ms ease-out;
+}
+
+.press:active {
+  transform: scale(0.97);
+}
+
+/* ── Reduced motion ─────────────────────────────────────────── */
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .reveal {
-    opacity: 1;
-    transform: none;
-    transition: none;
+  .reveal,
+  .stagger-item,
+  .hero-rise,
+  .image-fade,
+  .press {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+  .image-fade.is-loaded {
+    opacity: 0.9;
   }
 }

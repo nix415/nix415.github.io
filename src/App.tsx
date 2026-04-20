@@ -23,7 +23,7 @@ export default function App() {
 
         <Section id="projects" title={SITE.projectsSection.title}>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {PROJECTS.map((p) => (
+            {PROJECTS.map((p, i) => (
               <ProjectCard
                 key={p.name}
                 title={p.name}
@@ -32,6 +32,8 @@ export default function App() {
                 link={p.link}
                 linkText={p.linkText}
                 secondaryLink={p.secondaryLink}
+                className="stagger-item"
+                style={{ ["--stagger-delay" as never]: `${i * 80}ms` }}
               />
             ))}
           </div>

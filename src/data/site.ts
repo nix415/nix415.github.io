@@ -4,7 +4,7 @@ export const SITE = {
   hero: {
     headline:
       "Turning data into growth — building marketing analyses and digital experiences that help brands reach the right people.",
-    imageUrl: "",
+    imageUrl: "/headshot.jpg",
   },
   intro: {
     title: "Introduction",
