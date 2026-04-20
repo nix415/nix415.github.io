@@ -20,7 +20,7 @@ export default function Contact() {
             <span className="text-xs tracking-[0.3em] uppercase text-[color:var(--color-muted)]">
               {l.label}
             </span>
-            <span className="serif text-2xl group-hover:text-[color:var(--color-accent)] transition-colors">
+            <span className="display text-lg group-hover:text-[color:var(--color-accent)] transition-colors">
               {l.value} →
             </span>
           </a>

@@ -10,7 +10,7 @@ export default function Hero() {
           <p className="text-xs tracking-[0.3em] uppercase text-[color:var(--color-muted)] mb-6">
             Portfolio
           </p>
-          <h1 className="serif text-5xl md:text-6xl leading-[1.05]">
+          <h1 className="display text-4xl md:text-5xl leading-[1.1]">
             {headline}
           </h1>
         </div>

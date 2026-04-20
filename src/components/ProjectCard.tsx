@@ -38,9 +38,9 @@ const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
           if (!e.defaultPrevented) openLink();
         }}
         className={cn(
-          "group relative flex cursor-pointer flex-col overflow-hidden rounded-2xl",
+          "group relative flex cursor-pointer flex-col overflow-hidden rounded-xl",
           "border border-[color:var(--color-line)] bg-[color:var(--color-surface)] shadow-sm",
-          "transition-all duration-500 ease-in-out hover:-translate-y-2 hover:shadow-xl",
+          "transition-all duration-500 ease-in-out hover:-translate-y-1 hover:shadow-md",
           className,
         )}
         {...props}
@@ -54,24 +54,24 @@ const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
           />
         </div>
 
-        <div className="flex flex-1 flex-col p-6">
-          <h3 className="serif text-2xl leading-tight transition-colors duration-300 group-hover:text-[color:var(--color-accent)]">
+        <div className="flex flex-1 flex-col p-4">
+          <h3 className="display text-base leading-snug transition-colors duration-300 group-hover:text-[color:var(--color-accent)]">
             {title}
           </h3>
-          <p className="mt-3 flex-1 text-sm leading-relaxed text-[color:var(--color-muted)]">
+          <p className="mt-2 flex-1 text-[13px] leading-relaxed text-[color:var(--color-muted)]">
             {description}
           </p>
 
-          <div className="mt-5 flex flex-wrap items-center gap-x-5 gap-y-2 text-sm">
+          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
             <a
               href={link}
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="group/button inline-flex items-center gap-2 font-medium text-[color:var(--color-accent)] transition-all duration-300 hover:underline"
+              className="group/button inline-flex items-center gap-1.5 font-medium text-[color:var(--color-accent)] transition-all duration-300 hover:underline"
             >
               {linkText}
-              <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover/button:translate-x-1" />
+              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/button:translate-x-1" />
             </a>
             {secondaryLink && (
               <a

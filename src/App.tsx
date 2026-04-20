@@ -2,6 +2,7 @@ import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Section from "./components/Section";
 import ProjectCard from "./components/ProjectCard";
+import Skills from "./components/Skills";
 import Contact from "./components/Contact";
 import { SITE } from "./data/site";
 import { PROJECTS } from "./data/projects";
@@ -14,13 +15,14 @@ export default function App() {
         <Hero />
 
         <Section id="introduction" title={SITE.intro.title}>
-          <p className="text-lg leading-relaxed text-[color:var(--color-ink)]">
+          <p className="text-base md:text-lg leading-relaxed text-[color:var(--color-ink)] max-w-2xl">
             {SITE.intro.body}
           </p>
+          <Skills />
         </Section>
 
         <Section id="projects" title={SITE.projectsSection.title}>
-          <div className="grid sm:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {PROJECTS.map((p) => (
               <ProjectCard
                 key={p.name}
