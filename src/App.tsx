@@ -20,9 +20,17 @@ export default function App() {
         </Section>
 
         <Section id="projects" title={SITE.projectsSection.title}>
-          <div className="grid sm:grid-cols-2 gap-x-6 gap-y-12">
+          <div className="grid sm:grid-cols-2 gap-6">
             {PROJECTS.map((p) => (
-              <ProjectCard key={p.name} project={p} />
+              <ProjectCard
+                key={p.name}
+                title={p.name}
+                description={p.description}
+                imgSrc={p.imgSrc}
+                link={p.link}
+                linkText={p.linkText}
+                secondaryLink={p.secondaryLink}
+              />
             ))}
           </div>
         </Section>
