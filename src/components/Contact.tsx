@@ -8,14 +8,14 @@ export default function Contact() {
     { label: "LinkedIn", value: "linkedin.com/in/nixontse", href: linkedin },
   ];
   return (
-    <ul className="divide-y divide-[color:var(--color-line)] border-y border-[color:var(--color-line)]">
+    <ul className="flex flex-col gap-2">
       {links.map((l) => (
         <li key={l.label}>
           <a
             href={l.href}
             target={l.href.startsWith("http") ? "_blank" : undefined}
             rel={l.href.startsWith("http") ? "noopener noreferrer" : undefined}
-            className="flex items-center justify-between py-5 group"
+            className="flex items-center justify-between py-4 px-1 rounded-xl hover:bg-[color:var(--color-surface)]/60 transition-colors group"
           >
             <span className="text-xs tracking-[0.3em] uppercase text-[color:var(--color-muted)]">
               {l.label}

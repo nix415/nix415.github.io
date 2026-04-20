@@ -13,13 +13,13 @@ export default function App() {
       <main>
         <Hero />
 
-        <Section id="introduction" number="01" title={SITE.intro.title}>
+        <Section id="introduction" title={SITE.intro.title}>
           <p className="text-lg leading-relaxed text-[color:var(--color-ink)]">
             {SITE.intro.body}
           </p>
         </Section>
 
-        <Section id="projects" number="02" title={SITE.projectsSection.title}>
+        <Section id="projects" title={SITE.projectsSection.title}>
           <p className="text-[color:var(--color-muted)] mb-8">
             {SITE.projectsSection.intro}
           </p>
@@ -30,10 +30,7 @@ export default function App() {
           </div>
         </Section>
 
-        <Section id="contact" number="03" title={SITE.contact.title}>
-          <p className="text-[color:var(--color-muted)] mb-8">
-            {SITE.contact.intro}
-          </p>
+        <Section id="contact" title={SITE.contact.title}>
           <Contact />
         </Section>
       </main>

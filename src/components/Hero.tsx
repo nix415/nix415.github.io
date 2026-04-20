@@ -1,9 +1,31 @@
+import { useCallback, type MouseEvent } from "react";
 import { SITE } from "../data/site";
+
+function scrollToSection(id: string) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.scrollIntoView({ behavior: "smooth", block: "start" });
+  el.classList.remove("section-land");
+  void el.offsetWidth;
+  el.classList.add("section-land");
+  window.setTimeout(() => el.classList.remove("section-land"), 900);
+}
 
 export default function Hero() {
   const { headline, imageUrl } = SITE.hero;
+
+  const onNavProjects = useCallback((e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    scrollToSection("projects");
+  }, []);
+
+  const onNavContact = useCallback((e: MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    scrollToSection("contact");
+  }, []);
+
   return (
-    <section id="home" className="mx-auto max-w-6xl px-6 pt-16 pb-24">
+    <section id="home" className="mx-auto max-w-6xl px-6 pt-16 pb-24 scroll-mt-24">
       <div className="grid md:grid-cols-5 gap-10 items-center">
         <div className="md:col-span-3">
           <p className="text-xs tracking-[0.3em] uppercase text-[color:var(--color-muted)] mb-6">
@@ -15,13 +37,15 @@ export default function Hero() {
           <div className="mt-8 flex flex-wrap gap-3">
             <a
               href="#projects"
-              className="px-5 py-2.5 rounded-full bg-[color:var(--color-ink)] text-[color:var(--color-bg)] text-sm font-medium hover:opacity-90 transition-opacity"
+              onClick={onNavProjects}
+              className="px-5 py-2.5 rounded-full bg-[color:var(--color-ink)] text-[color:var(--color-bg)] text-sm font-medium hover:opacity-90 transition-all active:scale-[0.97]"
             >
               View projects
             </a>
             <a
               href="#contact"
-              className="px-5 py-2.5 rounded-full border border-[color:var(--color-line)] text-sm font-medium hover:bg-[color:var(--color-surface)] transition-colors"
+              onClick={onNavContact}
+              className="px-5 py-2.5 rounded-full border border-[color:var(--color-line)] text-sm font-medium hover:bg-[color:var(--color-surface)] transition-all active:scale-[0.97]"
             >
               Get in touch
             </a>

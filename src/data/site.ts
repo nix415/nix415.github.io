@@ -16,7 +16,6 @@ export const SITE = {
   },
   contact: {
     title: "Contact",
-    intro: "Open to internships, full-time roles, and collaborations.",
     email: "nixontse1@gmail.com",
     github: "https://github.com/nix415",
     linkedin: "https://www.linkedin.com/in/nixontse/",
