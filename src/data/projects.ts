@@ -15,7 +15,7 @@ export const PROJECTS: Project[] = [
   {
     name: "American Marketing Association",
     description:
-      "Two collegiate marketing case projects: a full marketing report for Kyle's Kitchen and a national MLB case competition deck. Covers brand positioning, target-audience research, channel strategy, and campaign recommendations.",
+      "Two collegiate case projects — a Kyle's Kitchen marketing report and a national MLB case deck — covering positioning, audience research, and campaign strategy.",
     imgSrc: "/images/kyles-kitchen-cover.png",
     link: "/pdfs/kyles-kitchen-marketing-report-2026.pdf",
     linkText: "View Marketing Report",
@@ -27,7 +27,7 @@ export const PROJECTS: Project[] = [
   {
     name: "Asian News Aggregator",
     description:
-      "A content product that pulls from 15+ AAPI news sources and uses signals from Reddit and AI to surface what audiences actually care about — built to practice audience targeting, content strategy, and engagement-driven growth.",
+      "Pulls 15+ AAPI news sources and uses Reddit + AI signals to surface what audiences care about — built around audience targeting and content strategy.",
     imgSrc: "/images/asian-news-aggregator.jpg",
     link: "https://asian-news-aggregator-git-main-nixontse1-2085s-projects.vercel.app",
     linkText: "View Live Site",
@@ -39,7 +39,7 @@ export const PROJECTS: Project[] = [
   {
     name: "SQL Marketing Portfolio",
     description:
-      "Five SQL analyses on a customer dataset covering acquisition mix, funnel conversion, cohort retention, revenue ROI, and RFM segmentation — the same questions a growth or lifecycle marketing team asks every week.",
+      "Five SQL analyses on customer data — acquisition, funnel, cohort retention, revenue ROI, and RFM segmentation — the questions growth teams ask weekly.",
     imgSrc: previewFor("nix415.github.io/sql-marketing-portfolio/"),
     link: "https://nix415.github.io/sql-marketing-portfolio/",
     linkText: "View Project",
