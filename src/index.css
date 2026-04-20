@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Instrument Serif", ui-serif, Georgia, serif;
+
+  --color-bg: #f4efe6;
+  --color-surface: #ece4d4;
+  --color-ink: #1f1d1a;
+  --color-muted: #6e675c;
+  --color-line: #d8cfbf;
+  --color-accent: #c25b3f;
+  --color-accent-soft: #e8b8a6;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  background: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.serif {
+  font-family: var(--font-serif);
+  letter-spacing: -0.01em;
+}
