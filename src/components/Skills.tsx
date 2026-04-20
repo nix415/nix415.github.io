@@ -8,7 +8,7 @@ export default function Skills() {
         <li
           key={skill}
           className="stagger-item px-3 py-1.5 rounded-full border border-[color:var(--color-line)] bg-[color:var(--color-surface)] text-xs text-[color:var(--color-ink)]"
-          style={{ "--stagger-delay": `${i * 50}ms` } as CSSProperties}
+          style={{ "--stagger-delay": `${320 + i * 45}ms` } as CSSProperties}
         >
           {skill}
         </li>

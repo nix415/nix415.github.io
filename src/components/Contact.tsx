@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import { SITE } from "../data/site";
 
 export default function Contact() {
@@ -9,8 +10,12 @@ export default function Contact() {
   ];
   return (
     <ul className="flex flex-col gap-2">
-      {links.map((l) => (
-        <li key={l.label}>
+      {links.map((l, i) => (
+        <li
+          key={l.label}
+          className="stagger-item"
+          style={{ ["--stagger-delay" as never]: `${200 + i * 90}ms` } as CSSProperties}
+        >
           <a
             href={l.href}
             target={l.href.startsWith("http") ? "_blank" : undefined}

@@ -100,6 +100,82 @@ body {
   opacity: 0.9;
 }
 
+/* ── Hero visualization ─────────────────────────────────────── */
+
+/* Pulsing background dots */
+@keyframes hv-dot-pulse {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.25);
+  }
+}
+
+.hv-dot {
+  display: block;
+  width: 6px;
+  height: 6px;
+  justify-self: center;
+  align-self: center;
+  animation: hv-dot-pulse 3.4s ease-in-out infinite;
+}
+
+/* Growth bars rise/fall on a loop */
+@keyframes hv-bar-rise {
+  0%,
+  100% {
+    height: var(--base, 30%);
+  }
+  50% {
+    height: var(--peak, 70%);
+  }
+}
+
+.hv-bar {
+  height: var(--base, 30%);
+  animation-name: hv-bar-rise;
+  animation-timing-function: cubic-bezier(0.45, 0, 0.55, 1);
+  animation-iteration-count: infinite;
+}
+
+/* Trend line draws itself, then resets */
+@keyframes hv-trend-draw {
+  0% {
+    stroke-dashoffset: 200;
+  }
+  60% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+.hv-trend {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: hv-trend-draw 7s ease-in-out infinite;
+}
+
+/* Live dot pulse */
+@keyframes hv-live-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.4;
+  }
+}
+
+.hv-pulse > span:first-child {
+  animation: hv-live-pulse 1.6s ease-in-out infinite;
+}
+
 /* ── Press feedback ─────────────────────────────────────────── */
 
 .press {
@@ -120,11 +196,21 @@ body {
   .stagger-item,
   .hero-rise,
   .image-fade,
-  .press {
+  .press,
+  .hv-dot,
+  .hv-bar,
+  .hv-trend,
+  .hv-pulse > span:first-child {
     opacity: 1 !important;
     transform: none !important;
     animation: none !important;
     transition: none !important;
+  }
+  .hv-bar {
+    height: 60% !important;
+  }
+  .hv-trend {
+    stroke-dashoffset: 0 !important;
   }
   .image-fade.is-loaded {
     opacity: 0.9;

@@ -15,7 +15,10 @@ export default function App() {
         <Hero />
 
         <Section id="introduction" title={SITE.intro.title}>
-          <p className="text-base md:text-lg leading-relaxed text-[color:var(--color-ink)] max-w-2xl">
+          <p
+            className="text-base md:text-lg leading-relaxed text-[color:var(--color-ink)] max-w-2xl stagger-item"
+            style={{ ["--stagger-delay" as never]: "200ms" }}
+          >
             {SITE.intro.body}
           </p>
           <Skills />
@@ -33,7 +36,7 @@ export default function App() {
                 linkText={p.linkText}
                 secondaryLink={p.secondaryLink}
                 className="stagger-item"
-                style={{ ["--stagger-delay" as never]: `${i * 80}ms` }}
+                style={{ ["--stagger-delay" as never]: `${220 + i * 110}ms` }}
               />
             ))}
           </div>

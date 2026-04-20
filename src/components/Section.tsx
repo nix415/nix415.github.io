@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { CSSProperties, ReactNode } from "react";
 import { useInView } from "../hooks/useInView";
 
 type Props = {
@@ -18,9 +18,19 @@ export default function Section({ id, title, children }: Props) {
     >
       <div className="grid md:grid-cols-12 gap-10">
         <div className="md:col-span-4">
-          <h2 className="display text-3xl md:text-4xl">{title}</h2>
+          <h2
+            className="display text-3xl md:text-4xl stagger-item"
+            style={{ ["--stagger-delay" as never]: "0ms" } as CSSProperties}
+          >
+            {title}
+          </h2>
         </div>
-        <div className="md:col-span-8">{children}</div>
+        <div
+          className="md:col-span-8 stagger-item"
+          style={{ ["--stagger-delay" as never]: "120ms" } as CSSProperties}
+        >
+          {children}
+        </div>
       </div>
     </section>
   );
