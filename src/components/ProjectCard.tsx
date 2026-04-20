@@ -1,62 +1,131 @@
 import type { Project } from "../data/projects";
 
 export default function ProjectCard({ project }: { project: Project }) {
-  return (
-    <article className="group rounded-2xl border border-[color:var(--color-line)] bg-[color:var(--color-surface)] p-6 hover:-translate-y-1 transition-transform">
-      <div className="flex items-start gap-4">
-        <div className="shrink-0 w-12 h-12 rounded-xl bg-[color:var(--color-bg)] border border-[color:var(--color-line)] flex items-center justify-center">
-          <FolderIcon />
-        </div>
-        <div className="flex-1 min-w-0">
-          <h3 className="serif text-2xl leading-tight">{project.name}</h3>
-          <p className="mt-2 text-[color:var(--color-muted)] text-sm leading-relaxed">
-            {project.description}
-          </p>
-          {project.tags.length > 0 && (
-            <ul className="mt-4 flex flex-wrap gap-2">
-              {project.tags.map((tag) => (
-                <li
-                  key={tag}
-                  className="text-[11px] tracking-wide uppercase px-2.5 py-1 rounded-full border border-[color:var(--color-line)] text-[color:var(--color-muted)]"
-                >
-                  {tag}
-                </li>
-              ))}
-            </ul>
-          )}
-          <div className="mt-5 flex flex-wrap gap-3 text-sm">
-            {project.liveUrl && (
-              <a
-                href={project.liveUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 font-medium text-[color:var(--color-accent)] hover:underline"
-              >
-                Live site →
-              </a>
-            )}
-            {project.repoUrl && (
-              <a
-                href={project.repoUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 text-[color:var(--color-muted)] hover:text-[color:var(--color-ink)]"
-              >
-                Source ↗
-              </a>
-            )}
+  const href = project.liveUrl ?? project.repoUrl;
+
+  const Inner = (
+    <div className="group flex flex-col items-center text-center">
+      <div className="relative w-full aspect-[4/3] flex items-end justify-center pb-2">
+        {/* Hover preview */}
+        {project.previewImage && (
+          <div
+            className="
+              absolute inset-x-0 -top-2 mx-auto w-[88%] aspect-[16/10]
+              rounded-xl overflow-hidden border border-[color:var(--color-line)]
+              bg-[color:var(--color-surface)] shadow-lg
+              opacity-0 -translate-y-1 scale-95
+              group-hover:opacity-100 group-hover:-translate-y-3 group-hover:scale-100
+              transition-all duration-300 ease-out
+              pointer-events-none
+            "
+          >
+            <img
+              src={project.previewImage}
+              alt={`${project.name} preview`}
+              loading="lazy"
+              className="w-full h-full object-cover object-top"
+            />
           </div>
-        </div>
+        )}
+
+        {/* Folder icon — sits below the preview */}
+        <FolderIcon className="w-40 h-32 transition-transform duration-300 ease-out group-hover:translate-y-1" />
       </div>
-    </article>
+
+      <h3 className="serif text-2xl mt-4">{project.name}</h3>
+      <p className="mt-2 text-sm leading-relaxed text-[color:var(--color-muted)] max-w-sm">
+        {project.description}
+      </p>
+
+      {(project.liveUrl || project.repoUrl) && (
+        <div className="mt-4 flex gap-4 text-sm">
+          {project.liveUrl && (
+            <span className="font-medium text-[color:var(--color-accent)]">
+              Live site →
+            </span>
+          )}
+          {project.repoUrl && (
+            <a
+              href={project.repoUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()}
+              className="text-[color:var(--color-muted)] hover:text-[color:var(--color-ink)]"
+            >
+              Source ↗
+            </a>
+          )}
+        </div>
+      )}
+    </div>
   );
+
+  if (href) {
+    return (
+      <a
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="block"
+        aria-label={`Open ${project.name}`}
+      >
+        {Inner}
+      </a>
+    );
+  }
+  return Inner;
 }
 
-function FolderIcon() {
+function FolderIcon({ className }: { className?: string }) {
   return (
-    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-      <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5h3.4a2 2 0 0 1 1.6.8l1.2 1.6h7.3A2.5 2.5 0 0 1 21.5 9.9v8.6A2.5 2.5 0 0 1 19 21H5a2 2 0 0 1-2-2V7.5Z" />
-      <path d="M8 12l1 1 2-2" opacity=".6" />
+    <svg
+      className={className}
+      viewBox="0 0 200 160"
+      xmlns="http://www.w3.org/2000/svg"
+      role="img"
+      aria-label="Folder"
+    >
+      <defs>
+        <linearGradient id="folderBack" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#7DB7E8" />
+          <stop offset="100%" stopColor="#5B9BD3" />
+        </linearGradient>
+        <linearGradient id="folderFront" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#A8D2F2" />
+          <stop offset="100%" stopColor="#76B0DF" />
+        </linearGradient>
+        <linearGradient id="tabGloss" x1="0" y1="0" x2="0" y2="1">
+          <stop offset="0%" stopColor="#9CC8EE" />
+          <stop offset="100%" stopColor="#6FA7D6" />
+        </linearGradient>
+      </defs>
+
+      {/* Back panel with tab */}
+      <path
+        d="M14 38 Q14 28 24 28 H78 L92 42 H176 Q186 42 186 52 V134 Q186 144 176 144 H24 Q14 144 14 134 Z"
+        fill="url(#folderBack)"
+      />
+      {/* Tab highlight */}
+      <path
+        d="M24 30 H78 L90 42 H32 Q24 42 24 50 Z"
+        fill="url(#tabGloss)"
+        opacity="0.6"
+      />
+
+      {/* Front panel (slightly lower so the tab peeks above) */}
+      <path
+        d="M14 56 Q14 48 24 48 H176 Q186 48 186 56 V134 Q186 144 176 144 H24 Q14 144 14 134 Z"
+        fill="url(#folderFront)"
+      />
+
+      {/* Subtle inner highlight on the front fold */}
+      <path
+        d="M14 56 Q14 48 24 48 H176 Q186 48 186 56"
+        stroke="#FFFFFF"
+        strokeOpacity="0.45"
+        strokeWidth="1.2"
+        fill="none"
+      />
     </svg>
   );
 }

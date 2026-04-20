@@ -3,16 +3,15 @@ export const SITE = {
   nav: ["Home", "Projects", "Contact"] as const,
   hero: {
     headline:
-      "Building thoughtful products at the intersection of full-stack development, data, and culture.",
+      "Turning data into growth — building marketing analyses and digital experiences that help brands reach the right people.",
     imageUrl: "",
   },
   intro: {
     title: "Introduction",
-    body: "Hey, I'm Nixon — a developer and analyst who likes building things that connect people and surface insights. I work across the stack, from React and TypeScript on the frontend to Python APIs and SQL-driven analyses on the back, with a focus on projects where design, data, and storytelling come together. I'm always exploring what to build next.",
+    body: "Hey, I'm Nixon — I'm focused on growth marketing and marketing analytics, where I get to mix curiosity about people with a love for data. I enjoy digging into customer behavior, building dashboards and SQL analyses that drive real decisions, and shipping web projects that put those insights to work. My goal is to join a team where I can help brands understand their audience, sharpen their funnel, and grow with intention.",
   },
   projectsSection: {
     title: "Projects",
-    intro: "A selection of recent work. Click any card for the live site or source.",
   },
   contact: {
     title: "Contact",

@@ -20,10 +20,7 @@ export default function App() {
         </Section>
 
         <Section id="projects" title={SITE.projectsSection.title}>
-          <p className="text-[color:var(--color-muted)] mb-8">
-            {SITE.projectsSection.intro}
-          </p>
-          <div className="grid sm:grid-cols-2 gap-5">
+          <div className="grid sm:grid-cols-2 gap-x-6 gap-y-12">
             {PROJECTS.map((p) => (
               <ProjectCard key={p.name} project={p} />
             ))}
