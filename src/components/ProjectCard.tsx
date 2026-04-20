@@ -45,7 +45,7 @@ const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
         )}
         {...props}
       >
-        <div className="aspect-video overflow-hidden bg-[color:var(--color-bg)]">
+        <div className="aspect-square overflow-hidden bg-[color:var(--color-bg)]">
           <img
             src={imgSrc}
             alt={title}
