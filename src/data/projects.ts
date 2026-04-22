@@ -34,7 +34,6 @@ export const PROJECTS: Project[] = [
       href: "https://github.com/nix415/sql-marketing-portfolio-site",
       label: "Source",
     },
-    stats: ["1,000-customer dataset", "5 SQL analyses", "17 queries"],
     outcome:
       "Isolated high-value RFM segments and flagged at-risk customers for re-activation.",
     featured: true,
@@ -52,7 +51,6 @@ export const PROJECTS: Project[] = [
       href: "https://github.com/nix415/asian-news-aggregator",
       label: "Source",
     },
-    stats: ["15+ sources", "Reddit + AI ranking", "Built during internship"],
     outcome:
       "Cut hours of manual content sourcing out of the weekly social workflow at Asian Founded.",
   },
@@ -75,7 +73,7 @@ export const PROJECTS: Project[] = [
     description:
       "National MLB marketing case deck covering audience segmentation, fan engagement strategy, and growth opportunities for a younger demographic.",
     imgSrc: "/images/ucsb-mlb-cover.png",
-    imgPosition: "50% 75%",
+    imgPosition: "50% 25%",
     link: "/pdfs/ucsb-mlb-case-competition.pdf",
     linkText: "View deck",
     outcome:

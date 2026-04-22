@@ -18,7 +18,6 @@ export const SITE = {
    * rendered as a mono band directly under the tagline.
    */
   quickFacts: [
-    "Available Spring 2026",
     "San Francisco / Remote",
     "Growth & Marketing Analytics",
   ] as const,
