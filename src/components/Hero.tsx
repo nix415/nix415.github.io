@@ -1,89 +1,120 @@
 import type { CSSProperties } from "react";
+import {
+  ArrowUpRight,
+  Bookmark,
+  FileText,
+  Send,
+  User,
+  type LucideIcon,
+} from "lucide-react";
 import { SITE } from "../data/site";
-import HeroVisual from "./HeroVisual";
-import Currently from "./Currently";
+import AvailabilityPill from "./AvailabilityPill";
+import LetterRise from "./LetterRise";
+import CurrentlyLine from "./CurrentlyLine";
+import MagneticCTA from "./MagneticCTA";
+import { useParallax } from "../hooks/useParallax";
 
-/**
- * Editorial hero — masthead chrome on top, split-text headline with
- * a mustard-marker highlight, a short standfirst, and a Currently
- * ticker in the lower-left. HeroVisual (the cover plate) sits on
- * the right.
- */
+const ICONS: Record<string, LucideIcon> = {
+  User,
+  FileText,
+  Bookmark,
+  Send,
+};
+
 export default function Hero() {
-  const { headlineWords, markerPhrase, standfirst } = SITE.hero;
-
-  // Walk through the words and mark the phrase that gets highlighted.
-  // We match the phrase as a substring of the joined sentence so minor
-  // punctuation variants still work.
-  const joined = headlineWords.join(" ");
-  const start = joined.toLowerCase().indexOf(markerPhrase.toLowerCase());
-  const end = start + markerPhrase.length;
-
-  // Determine, per-word, whether its characters fall inside the marker span.
-  let cursor = 0;
-  const decorated = headlineWords.map((w) => {
-    const wStart = cursor;
-    const wEnd = cursor + w.length;
-    cursor = wEnd + 1; // +1 for the space
-    const isMarked = wStart >= start && wEnd <= end;
-    return { word: w, isMarked };
-  });
+  const portrait = useParallax<HTMLDivElement>(14);
 
   return (
-    <section id="home" className="relative scroll-mt-24">
-      {/* Masthead rule */}
-      <div className="border-b border-[color:var(--color-line)]">
-        <div className="mx-auto max-w-6xl px-6 py-3 flex items-center justify-between mono text-[10px] uppercase tracking-[0.3em] text-[color:var(--color-muted)]">
-          <span>A small portfolio zine</span>
-          <span>{SITE.issue.subject}</span>
+    <section
+      id="top"
+      className="relative px-6 pt-32 pb-20 sm:pt-36 md:pt-40 md:pb-28"
+    >
+      <div className="mx-auto max-w-6xl">
+        <div className="hero-rise" style={{ ["--hero-delay" as never]: "0ms" } as CSSProperties}>
+          <AvailabilityPill text={SITE.availability} />
         </div>
-      </div>
 
-      <div className="mx-auto max-w-6xl px-6 pt-14 md:pt-20 pb-16">
-        <div className="md:grid md:grid-cols-12 md:gap-10 md:items-start">
-          {/* Cover plate — right column, floats up on md+ */}
+        <h1 className="display mt-8 leading-[0.95] tracking-[-0.02em] text-[clamp(3.25rem,12vw,9rem)]">
+          <span className="block">
+            <LetterRise text={SITE.firstName} baseDelay={120} />
+          </span>
+          <span className="block">
+            <LetterRise text={SITE.lastName} baseDelay={120 + SITE.firstName.length * 55} />
+          </span>
+        </h1>
+
+        <div className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
           <div
-            className="order-1 md:order-none md:col-start-8 md:col-span-5 relative hero-rise"
-            style={{ "--hero-delay": "260ms" } as CSSProperties}
+            className="md:col-span-7 hero-rise"
+            style={{ ["--hero-delay" as never]: "650ms" } as CSSProperties}
           >
-            <HeroVisual />
+            <p className="display text-[17px] sm:text-[19px] leading-[1.55] text-[color:var(--color-ink)] max-w-[52ch]">
+              {SITE.hero.bio}
+            </p>
+
+            <div className="mt-10 flex items-start gap-6">
+              <div
+                ref={portrait.ref}
+                className="shrink-0 h-20 w-20 rounded-full overflow-hidden border border-[color:var(--color-line)] bg-[color:var(--color-surface)]"
+                style={{ transform: `translateY(${portrait.offset}px)` }}
+              >
+                <img
+                  src="/headshot.jpg"
+                  alt="Nixon Tse portrait"
+                  className="h-full w-full object-cover"
+                  loading="eager"
+                />
+              </div>
+              <div className="flex-1 pt-1">
+                <div className="space-y-1">
+                  {SITE.hero.roles.map((role) => (
+                    <div
+                      key={role}
+                      className="mono text-[11px] uppercase tracking-[0.28em] text-[color:var(--color-muted)]"
+                    >
+                      {role}
+                    </div>
+                  ))}
+                </div>
+                <div className="mt-3">
+                  <CurrentlyLine items={SITE.hero.currently} />
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Text column */}
-          <div className="order-2 md:order-none md:col-start-1 md:col-span-7 mt-10 md:mt-0 relative z-10">
-            <p
-              className="mono text-[11px] tracking-[0.3em] uppercase text-[color:var(--color-muted)] mb-6 hero-rise"
-              style={{ "--hero-delay": "0ms" } as CSSProperties}
-            >
-              Issue {SITE.issue.number} · The Curiosity Edition
-            </p>
-
-            <h1 className="display text-5xl md:text-[4.25rem] leading-[1.02] tracking-tight max-w-[36rem]">
-              {decorated.map(({ word, isMarked }, i) => (
-                <span
-                  key={`${word}-${i}`}
-                  className="word"
-                  style={{ animationDelay: `${120 + i * 45}ms` }}
-                >
-                  {isMarked ? <span className="marker">{word}</span> : word}
-                  {i < decorated.length - 1 ? " " : ""}
-                </span>
-              ))}
-            </h1>
-
-            <p
-              className="mt-8 text-base md:text-lg leading-relaxed text-[color:var(--color-muted)] max-w-[34rem] hero-rise"
-              style={{ "--hero-delay": "900ms" } as CSSProperties}
-            >
-              {standfirst}
-            </p>
-
-            <div
-              className="mt-10 hero-rise"
-              style={{ "--hero-delay": "1100ms" } as CSSProperties}
-            >
-              <Currently />
+          <div
+            className="md:col-span-5 hero-rise"
+            style={{ ["--hero-delay" as never]: "800ms" } as CSSProperties}
+          >
+            <div className="mono text-[10.5px] uppercase tracking-[0.28em] text-[color:var(--color-muted)]">
+              Where you can start
             </div>
+            <ul className="mt-5 divide-y divide-[color:var(--color-line)] border-t border-b border-[color:var(--color-line)]">
+              {SITE.startHere.map((item, i) => {
+                const Icon = ICONS[item.icon] ?? ArrowUpRight;
+                return (
+                  <li key={i}>
+                    <MagneticCTA
+                      href={item.target}
+                      className="group block w-full"
+                      innerClassName="w-full"
+                      ariaLabel={item.label}
+                    >
+                      <span className="flex w-full items-center gap-4 py-4">
+                        <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[color:var(--color-line)] text-[color:var(--color-ink)] transition-colors group-hover:bg-[color:var(--color-ink)] group-hover:text-[color:var(--color-bg)]">
+                          <Icon className="h-4 w-4" aria-hidden="true" />
+                        </span>
+                        <span className="flex-1 display text-[17px] text-[color:var(--color-ink)]">
+                          {item.label}
+                        </span>
+                        <ArrowUpRight className="h-4 w-4 shrink-0 text-[color:var(--color-muted)] transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-[color:var(--color-ink)]" />
+                      </span>
+                    </MagneticCTA>
+                  </li>
+                );
+              })}
+            </ul>
           </div>
         </div>
       </div>

@@ -1,47 +1,89 @@
-import type { CSSProperties } from "react";
+import { ArrowUpRight } from "lucide-react";
 import { SITE } from "../data/site";
+import CopyableEmail from "./CopyableEmail";
 
-/**
- * Editorial contact list — a colophon-style column where each row
- * has a small mono label on the left, dotted leader filling the
- * middle, and the value (link) aligned right.
- */
+type ColophonRow = {
+  label: string;
+  value: string;
+  href?: string;
+  external?: boolean;
+};
+
 export default function Contact() {
-  const { email, github, linkedin } = SITE.contact;
-  const links = [
-    { label: "Email", value: email, href: `mailto:${email}` },
-    { label: "GitHub", value: "github.com/nix415", href: github },
-    { label: "LinkedIn", value: "linkedin.com/in/nixontse", href: linkedin },
+  const rows: ColophonRow[] = [
+    {
+      label: "GitHub",
+      value: "github.com/nix415",
+      href: SITE.contact.github,
+      external: true,
+    },
+    {
+      label: "LinkedIn",
+      value: "linkedin.com/in/nixontse",
+      href: SITE.contact.linkedin,
+      external: true,
+    },
+    {
+      label: "Resume",
+      value: "Download PDF",
+      href: SITE.contact.resumeHref,
+      external: true,
+    },
   ];
+
   return (
-    <ul className="flex flex-col">
-      {links.map((l, i) => (
-        <li
-          key={l.label}
-          className="stagger-item border-b border-dashed border-[color:var(--color-line)] last:border-b-0"
-          style={
-            {
-              ["--stagger-delay" as never]: `${200 + i * 90}ms`,
-            } as CSSProperties
-          }
-        >
-          <a
-            href={l.href}
-            target={l.href.startsWith("http") ? "_blank" : undefined}
-            rel={
-              l.href.startsWith("http") ? "noopener noreferrer" : undefined
-            }
-            className="press flex items-center justify-between gap-4 py-4 group"
-          >
-            <span className="mono text-[10px] uppercase tracking-[0.3em] text-[color:var(--color-muted)]">
-              {l.label}
-            </span>
-            <span className="display-italic text-lg md:text-xl text-[color:var(--color-ink)] group-hover:text-[color:var(--color-accent)] transition-colors">
-              {l.value} <span aria-hidden>→</span>
-            </span>
-          </a>
-        </li>
-      ))}
-    </ul>
+    <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
+      <div className="md:col-span-7">
+        <p className="display text-[clamp(2.25rem,6vw,4rem)] leading-[1.02] tracking-[-0.02em] text-[color:var(--color-ink)]">
+          {SITE.contact.title}
+        </p>
+        <p className="mt-6 display text-[17px] leading-[1.55] text-[color:var(--color-muted)] max-w-[52ch]">
+          Whether it's an internship, a full-time growth role, or a coffee
+          chat about marketing analytics — I'd love to hear what you're
+          working on.
+        </p>
+      </div>
+
+      <div className="md:col-span-5">
+        <div className="mono text-[10.5px] uppercase tracking-[0.28em] text-[color:var(--color-muted)]">
+          Colophon
+        </div>
+        <dl className="mt-5 border-t border-[color:var(--color-line)]">
+          <div className="flex items-center justify-between gap-4 border-b border-[color:var(--color-line)] py-4">
+            <dt className="mono text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-muted)]">
+              Email
+            </dt>
+            <dd>
+              <CopyableEmail email={SITE.contact.email} />
+            </dd>
+          </div>
+          {rows.map((row) => (
+            <div
+              key={row.label}
+              className="flex items-center justify-between gap-4 border-b border-[color:var(--color-line)] py-4"
+            >
+              <dt className="mono text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-muted)]">
+                {row.label}
+              </dt>
+              <dd>
+                {row.href ? (
+                  <a
+                    href={row.href}
+                    target={row.external ? "_blank" : undefined}
+                    rel={row.external ? "noopener noreferrer" : undefined}
+                    className="press inline-flex items-center gap-2 mono text-sm link-ink"
+                  >
+                    <span>{row.value}</span>
+                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                  </a>
+                ) : (
+                  <span className="mono text-sm">{row.value}</span>
+                )}
+              </dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
   );
 }

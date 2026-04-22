@@ -8,11 +8,11 @@ export interface ProjectCardProps extends React.HTMLAttributes<HTMLElement> {
   description: string;
   link: string;
   linkText?: string;
-  secondaryLink?: { href: string; label: string };
-  /** Editorial index number, e.g. "01" */
   index?: string;
-  /** Mono category label, e.g. "MARKETING · CASE STUDY" */
   category?: string;
+  stats?: string[];
+  secondaryLink?: { href: string; label: string };
+  featured?: boolean;
 }
 
 const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
@@ -23,99 +23,114 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
       title,
       description,
       link,
-      linkText = "Read",
-      secondaryLink,
+      linkText = "Open project",
       index,
       category,
-      onClick,
+      stats,
+      secondaryLink,
+      featured,
       ...props
     },
     ref,
   ) => {
-    const openLink = () => {
-      window.open(link, "_blank", "noopener,noreferrer");
-    };
-
     return (
       <article
         ref={ref}
-        onClick={(e) => {
-          onClick?.(e);
-          if (!e.defaultPrevented) openLink();
-        }}
         className={cn(
-          "group relative flex flex-col cursor-pointer press",
-          "bg-[color:var(--color-surface)] border border-[color:var(--color-line)]",
-          "transition-[transform,box-shadow,background-color] duration-500 ease-out",
-          "hover:-translate-y-1 hover:shadow-[0_20px_40px_-20px_rgba(27,27,27,0.25)]",
-          "hover:bg-[color:var(--color-bg)]",
+          "group relative flex flex-col",
           className,
         )}
         {...props}
       >
-        {/* Cover image */}
-        <div className="aspect-[4/3] overflow-hidden bg-[color:var(--color-bg)] border-b border-[color:var(--color-line)]">
-          <img
-            src={imgSrc}
-            alt={title}
-            loading="lazy"
-            className="h-full w-full object-cover object-top transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
-          />
-        </div>
+        <a
+          href={link}
+          target={link.startsWith("http") ? "_blank" : undefined}
+          rel={link.startsWith("http") ? "noopener noreferrer" : undefined}
+          aria-label={`${title} — ${linkText}`}
+          className="block press"
+        >
+          <div
+            className={cn(
+              "relative aspect-[4/3] overflow-hidden rounded-md bg-[color:var(--color-surface)] border border-[color:var(--color-line)]",
+              featured && "md:aspect-[16/10]",
+            )}
+          >
+            <img
+              src={imgSrc}
+              alt={title}
+              loading="lazy"
+              className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.03]"
+            />
+            <div
+              aria-hidden="true"
+              className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
+            />
+          </div>
+        </a>
 
-        {/* Text block */}
-        <div className="relative p-5 flex-1 flex flex-col">
-          {/* Top row — big numeral + category */}
-          <div className="flex items-start justify-between mb-4">
-            {index && (
-              <span className="display-italic text-3xl md:text-4xl leading-none text-[color:var(--color-accent)]">
+        <div className="mt-5 flex items-start justify-between gap-4">
+          <div className="flex items-center gap-3">
+            {index ? (
+              <span className="mono text-[11px] uppercase tracking-[0.25em] text-[color:var(--color-muted)]">
                 {index}
               </span>
-            )}
-            {category && (
-              <span className="mono text-[9px] uppercase tracking-[0.28em] text-[color:var(--color-muted)] text-right">
+            ) : null}
+            {category ? (
+              <span className="mono text-[11px] uppercase tracking-[0.25em] text-[color:var(--color-muted)]">
                 {category}
               </span>
-            )}
+            ) : null}
           </div>
+        </div>
 
-          <h3 className="display text-[1.4rem] md:text-[1.55rem] leading-[1.15] tracking-tight transition-colors duration-300 group-hover:text-[color:var(--color-accent)]">
+        <h3 className="mt-2 display text-[clamp(1.5rem,2.5vw,2rem)] leading-[1.1] tracking-[-0.01em] text-[color:var(--color-ink)]">
+          <a
+            href={link}
+            target={link.startsWith("http") ? "_blank" : undefined}
+            rel={link.startsWith("http") ? "noopener noreferrer" : undefined}
+            className="link-ink"
+          >
             {title}
-          </h3>
+          </a>
+        </h3>
 
-          <p className="mt-3 text-[13.5px] leading-relaxed text-[color:var(--color-muted)] flex-1">
-            {description}
-          </p>
-
-          {/* Rule + CTAs */}
-          <div className="mt-5 pt-4 border-t border-[color:var(--color-line)] flex items-center justify-between gap-3">
-            <a
-              href={link}
-              target="_blank"
-              rel="noopener noreferrer"
-              onClick={(e) => e.stopPropagation()}
-              className="link-ink inline-flex items-center gap-1.5 text-[13px] font-medium text-[color:var(--color-ink)]"
-            >
-              {linkText}
-              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-            </a>
-            {secondaryLink && (
-              <a
-                href={secondaryLink.href}
-                target="_blank"
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="mono text-[10px] uppercase tracking-[0.25em] text-[color:var(--color-muted)] hover:text-[color:var(--color-ink)] transition-colors"
-              >
-                {secondaryLink.label} ↗
-              </a>
-            )}
+        {stats && stats.length > 0 ? (
+          <div className="mt-3 mono text-[11.5px] uppercase tracking-[0.22em] text-[color:var(--color-muted)]">
+            {stats.join(" · ")}
           </div>
+        ) : null}
+
+        <p className="mt-4 text-[15px] leading-[1.6] text-[color:var(--color-muted)] max-w-[58ch]">
+          {description}
+        </p>
+
+        <div className="mt-5 flex items-center gap-5">
+          <a
+            href={link}
+            target={link.startsWith("http") ? "_blank" : undefined}
+            rel={link.startsWith("http") ? "noopener noreferrer" : undefined}
+            className="group/link press inline-flex items-center gap-2 mono text-[11.5px] uppercase tracking-[0.22em] text-[color:var(--color-ink)]"
+          >
+            <span className="link-ink">{linkText}</span>
+            <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+          </a>
+          {secondaryLink ? (
+            <a
+              href={secondaryLink.href}
+              target={secondaryLink.href.startsWith("http") ? "_blank" : undefined}
+              rel={secondaryLink.href.startsWith("http") ? "noopener noreferrer" : undefined}
+              className="group/link2 press inline-flex items-center gap-2 mono text-[11.5px] uppercase tracking-[0.22em] text-[color:var(--color-muted)] hover:text-[color:var(--color-ink)]"
+            >
+              <span className="link-ink">{secondaryLink.label}</span>
+              <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link2:translate-x-0.5 group-hover/link2:-translate-y-0.5" />
+            </a>
+          ) : null}
         </div>
       </article>
     );
   },
 );
+
 ProjectCard.displayName = "ProjectCard";
 
 export { ProjectCard };
