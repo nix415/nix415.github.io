@@ -11,6 +11,7 @@ export interface ProjectCardProps extends React.HTMLAttributes<HTMLElement> {
   index?: string;
   category?: string;
   stats?: string[];
+  outcome?: string;
   secondaryLink?: { href: string; label: string };
   featured?: boolean;
 }
@@ -27,6 +28,7 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
       index,
       category,
       stats,
+      outcome,
       secondaryLink,
       featured,
       ...props
@@ -103,6 +105,18 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
         <p className="mt-4 text-[15px] leading-[1.6] text-[color:var(--color-muted)] max-w-[58ch]">
           {description}
         </p>
+
+        {outcome ? (
+          <p className="mt-3 flex items-start gap-2 text-[14px] leading-[1.55] italic text-[color:var(--color-ink)] max-w-[58ch]">
+            <span
+              aria-hidden="true"
+              className="mono mt-[2px] text-[11px] not-italic tracking-[0.2em] text-[color:var(--color-muted)]"
+            >
+              →
+            </span>
+            <span>{outcome}</span>
+          </p>
+        ) : null}
 
         <div className="mt-5 flex items-center gap-5">
           <a

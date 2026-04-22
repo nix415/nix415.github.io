@@ -9,6 +9,11 @@ export type Project = {
   category?: string;
   /** Editorial one-line stat strip rendered under the title. */
   stats?: string[];
+  /**
+   * One-sentence outcome or takeaway. Rendered under the description so
+   * recruiters see *what the project produced*, not just its inputs.
+   */
+  outcome?: string;
   /** Marks the lead project so the layout can give it more real-estate. */
   featured?: boolean;
 };
@@ -32,6 +37,8 @@ export const PROJECTS: Project[] = [
       label: "Source",
     },
     stats: ["1,000-customer dataset", "5 SQL analyses", "17 queries"],
+    outcome:
+      "Isolated high-value RFM segments and flagged at-risk customers for re-activation.",
     featured: true,
   },
   {
@@ -48,6 +55,8 @@ export const PROJECTS: Project[] = [
       label: "Source",
     },
     stats: ["15+ sources", "Reddit + AI ranking", "Built during internship"],
+    outcome:
+      "Cut hours of manual content sourcing out of the weekly social workflow at Asian Founded.",
   },
   {
     index: "03",
@@ -58,6 +67,8 @@ export const PROJECTS: Project[] = [
     imgSrc: "/images/kyles-kitchen-cover.png",
     link: "/pdfs/kyles-kitchen-marketing-report-2026.pdf",
     linkText: "Read report",
+    outcome:
+      "Delivered a full positioning + campaign roadmap for a UCSB AMA client engagement.",
   },
   {
     index: "04",
@@ -68,5 +79,7 @@ export const PROJECTS: Project[] = [
     imgSrc: "/images/ucsb-mlb-cover.png",
     link: "/pdfs/ucsb-mlb-case-competition.pdf",
     linkText: "View deck",
+    outcome:
+      "Audience segmentation + fan-growth strategy aimed at reaching a younger MLB demographic.",
   },
 ];

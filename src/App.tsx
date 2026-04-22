@@ -37,6 +37,7 @@ export default function App() {
                 index={p.index}
                 category={p.category}
                 stats={p.stats}
+                outcome={p.outcome}
                 featured={p.featured}
                 className={`stagger-item ${p.featured ? "md:col-span-2" : ""}`}
                 style={
@@ -63,12 +64,38 @@ export default function App() {
                 {SITE.about.closing}
               </p>
             </div>
-            <div className="md:col-span-5">
-              <div className="mono text-[10.5px] uppercase tracking-[0.28em] text-[color:var(--color-muted)]">
-                Tools &amp; Subjects
+            <div className="md:col-span-5 space-y-10">
+              <div>
+                <div className="mono text-[10.5px] uppercase tracking-[0.28em] text-[color:var(--color-muted)]">
+                  Tools &amp; Subjects
+                </div>
+                <div className="mt-4">
+                  <Skills />
+                </div>
               </div>
-              <div className="mt-4">
-                <Skills />
+
+              <div>
+                <div className="mono text-[10.5px] uppercase tracking-[0.28em] text-[color:var(--color-muted)]">
+                  {SITE.credentials.label}
+                </div>
+                <div className="mt-4 flex flex-wrap items-center gap-x-3 gap-y-2">
+                  {SITE.credentials.items.map((item, i) => (
+                    <span
+                      key={item}
+                      className="mono text-[12px] uppercase tracking-[0.22em] text-[color:var(--color-ink)]"
+                    >
+                      {item}
+                      {i < SITE.credentials.items.length - 1 ? (
+                        <span
+                          className="mx-3 text-[color:var(--color-muted)]"
+                          aria-hidden="true"
+                        >
+                          ·
+                        </span>
+                      ) : null}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           </div>

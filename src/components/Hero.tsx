@@ -38,6 +38,13 @@ export default function Hero() {
           </span>
         </h1>
 
+        <div
+          className="hero-rise mt-5 mono text-[11px] sm:text-[12px] uppercase tracking-[0.28em] text-[color:var(--color-muted)]"
+          style={{ ["--hero-delay" as never]: "500ms" } as CSSProperties}
+        >
+          {SITE.tagline}
+        </div>
+
         <div className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-start">
           <div
             className="md:col-span-7 hero-rise"

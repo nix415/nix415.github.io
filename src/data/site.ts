@@ -7,6 +7,12 @@ export const SITE = {
 
   availability: "Available · Spring 2026 · Growth & Marketing Analytics",
 
+  /**
+   * Short 2-second identity line under the hero name so recruiters know
+   * the school, major, and target roles without reading a paragraph.
+   */
+  tagline: "UCSB '26 · Communication · Growth Marketing + Analytics",
+
   hero: {
     bio: "One of my deepest joys comes from turning customer curiosity into work people actually notice — across growth marketing, marketing analytics, and small digital experiments.",
     roles: ["Growth Marketing", "Marketing Analytics"] as const,
@@ -57,6 +63,20 @@ export const SITE = {
       "Audience Research",
       "React",
       "Excel",
+    ] as const,
+  },
+
+  /**
+   * Certifications and coursework that recruiters typically filter on.
+   * Keep this short and only list what's actually completed — replace
+   * any placeholder that doesn't apply.
+   */
+  credentials: {
+    label: "Credentials",
+    items: [
+      "HubSpot Inbound Marketing",
+      "Google Analytics",
+      "SQL for Data Analysis",
     ] as const,
   },
 
