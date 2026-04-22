@@ -43,35 +43,35 @@ export default function Contact() {
 
       <div className="md:col-span-5">
         <dl className="border-t border-[color:var(--color-line)]">
-          <div className="flex items-center justify-between gap-4 border-b border-[color:var(--color-line)] py-4">
-            <dt className="mono text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-muted)]">
+          <div className="flex flex-nowrap items-center justify-between gap-4 border-b border-[color:var(--color-line)] py-4">
+            <dt className="mono text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-muted)] shrink-0">
               Email
             </dt>
-            <dd>
+            <dd className="min-w-0">
               <CopyableEmail email={SITE.contact.email} />
             </dd>
           </div>
           {rows.map((row) => (
             <div
               key={row.label}
-              className="flex items-center justify-between gap-4 border-b border-[color:var(--color-line)] py-4"
+              className="flex flex-nowrap items-center justify-between gap-4 border-b border-[color:var(--color-line)] py-4"
             >
-              <dt className="mono text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-muted)]">
+              <dt className="mono text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-muted)] shrink-0">
                 {row.label}
               </dt>
-              <dd>
+              <dd className="min-w-0">
                 {row.href ? (
                   <a
                     href={row.href}
                     target={row.external ? "_blank" : undefined}
                     rel={row.external ? "noopener noreferrer" : undefined}
-                    className="press inline-flex items-center gap-2 mono text-sm link-ink"
+                    className="press inline-flex items-center gap-2 mono text-sm link-ink whitespace-nowrap"
                   >
-                    <span>{row.value}</span>
-                    <ArrowUpRight className="h-3.5 w-3.5" aria-hidden="true" />
+                    <span className="truncate">{row.value}</span>
+                    <ArrowUpRight className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
                   </a>
                 ) : (
-                  <span className="mono text-sm">{row.value}</span>
+                  <span className="mono text-sm whitespace-nowrap">{row.value}</span>
                 )}
               </dd>
             </div>

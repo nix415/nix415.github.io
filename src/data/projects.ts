@@ -24,8 +24,8 @@ export const PROJECTS: Project[] = [
     name: "SQL Marketing Portfolio",
     description:
       "Five SQL analyses on Kaggle's Customer Segmentation Data — acquisition, funnel, cohort retention, revenue ROI, and RFM segmentation. The questions a growth team asks every week.",
-    imgSrc: previewFor("nix415.github.io/sql-marketing-portfolio/"),
-    link: "https://nix415.github.io/sql-marketing-portfolio/",
+    imgSrc: previewFor("sql-marketing-portfolio-site.vercel.app"),
+    link: "https://sql-marketing-portfolio-site.vercel.app",
     linkText: "Open project",
     secondaryLink: {
       href: "https://github.com/nix415/sql-marketing-portfolio-site",
@@ -51,17 +51,22 @@ export const PROJECTS: Project[] = [
   },
   {
     index: "03",
-    category: "Marketing · Case Studies",
-    name: "American Marketing Association",
+    category: "AMA · Marketing Report",
+    name: "Kyle's Kitchen Marketing Report",
     description:
-      "Two collegiate case projects — a Kyle's Kitchen marketing report and a national MLB case deck — covering positioning, audience research, and campaign strategy.",
+      "Collegiate marketing report for Kyle's Kitchen — positioning, audience research, and a campaign roadmap built for the American Marketing Association at UCSB.",
     imgSrc: "/images/kyles-kitchen-cover.png",
     link: "/pdfs/kyles-kitchen-marketing-report-2026.pdf",
     linkText: "Read report",
-    secondaryLink: {
-      href: "/pdfs/ucsb-mlb-case-competition.pdf",
-      label: "MLB Case Deck",
-    },
-    stats: ["2 case studies", "Positioning + audience", "Campaign strategy"],
+  },
+  {
+    index: "04",
+    category: "AMA · Case Competition",
+    name: "UCSB × MLB Case Competition",
+    description:
+      "National MLB marketing case deck covering audience segmentation, fan engagement strategy, and growth opportunities for a younger demographic.",
+    imgSrc: "/images/ucsb-mlb-cover.png",
+    link: "/pdfs/ucsb-mlb-case-competition.pdf",
+    linkText: "View deck",
   },
 ];

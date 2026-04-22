@@ -28,18 +28,16 @@ export default function CopyableEmail({ email, className }: Props) {
     <button
       type="button"
       onClick={copy}
-      className={`press inline-flex items-center gap-2 link-ink ${className ?? ""}`}
+      className={`press inline-flex items-center gap-2 link-ink whitespace-nowrap ${className ?? ""}`}
       aria-label={copied ? "Email copied" : `Copy email ${email}`}
+      title={copied ? "Copied" : "Click to copy"}
     >
       <span className="mono text-sm">{email}</span>
       {copied ? (
-        <Check className="h-3.5 w-3.5" aria-hidden="true" />
+        <Check className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
       ) : (
-        <Copy className="h-3.5 w-3.5 opacity-70" aria-hidden="true" />
+        <Copy className="h-3.5 w-3.5 shrink-0 opacity-70" aria-hidden="true" />
       )}
-      <span className="mono text-[11px] uppercase tracking-[0.2em] text-[color:var(--color-muted)]">
-        {copied ? "Copied" : "Copy"}
-      </span>
     </button>
   );
 }

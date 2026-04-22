@@ -103,7 +103,7 @@ body {
 .letter {
   display: inline-block;
   opacity: 0;
-  animation: letter-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) backwards;
+  animation: letter-rise 0.75s cubic-bezier(0.22, 1, 0.36, 1) both;
   animation-delay: calc(var(--i, 0) * 55ms + var(--base-delay, 0ms));
   /* preserve spaces between words */
   white-space: pre;
@@ -149,23 +149,37 @@ body {
 }
 
 /* ── Currently line — single-line crossfade ────────────────── */
+/*
+ * Percentages are expressed as fractions of the whole cycle, which is the
+ * same for every item. With four items staggered 25% apart, each slot
+ * displays for ~23% of the cycle and hands off in the remaining ~2%.
+ */
 @keyframes ticker-crossfade {
-  0%, 5% {
+  0% {
     opacity: 0;
     transform: translateY(4px);
   }
-  12%, 23% {
+  2% {
     opacity: 1;
     transform: none;
   }
-  30%, 100% {
+  25% {
+    opacity: 1;
+    transform: none;
+  }
+  27% {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  100% {
     opacity: 0;
     transform: translateY(-4px);
   }
 }
 .currently-item {
   grid-area: 1 / 1;
-  animation: ticker-crossfade 28s infinite;
+  animation: ticker-crossfade 28s linear infinite;
+  will-change: opacity, transform;
 }
 
 /* ── Availability pill dot pulse ───────────────────────────── */

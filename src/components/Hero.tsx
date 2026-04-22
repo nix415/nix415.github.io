@@ -29,14 +29,7 @@ export default function Hero() {
       className="relative px-6 pt-24 pb-16 sm:pt-28 md:pt-28 md:pb-20"
     >
       <div className="mx-auto max-w-6xl">
-        <div
-          className="hero-rise display text-[18px] sm:text-[20px] leading-tight tracking-[-0.01em] text-[color:var(--color-ink)]"
-          style={{ ["--hero-delay" as never]: "0ms" } as CSSProperties}
-        >
-          {SITE.name}
-        </div>
-
-        <h1 className="display mt-5 leading-[0.95] tracking-[-0.02em] text-[clamp(3.25rem,12vw,9rem)]">
+        <h1 className="display leading-[0.95] tracking-[-0.02em] text-[clamp(3.25rem,12vw,9rem)]">
           <span className="block">
             <LetterRise text={SITE.firstName} baseDelay={120} />
           </span>
@@ -45,7 +38,7 @@ export default function Hero() {
           </span>
         </h1>
 
-        <div className="mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14">
+        <div className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-start">
           <div
             className="md:col-span-7 hero-rise"
             style={{ ["--hero-delay" as never]: "650ms" } as CSSProperties}
