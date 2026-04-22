@@ -29,9 +29,8 @@ export const SITE = {
    * `icon` names map to lucide-react exports in <Hero>.
    */
   startHere: [
-    { icon: "User", label: "Learn what I do", target: "#about" },
     { icon: "FileText", label: "Browse my projects", target: "#work" },
-    { icon: "Bookmark", label: "Read my SQL case study", target: "#work" },
+    { icon: "Sparkles", label: "Learn fun facts about me", target: "#about" },
     { icon: "Send", label: "Get in touch", target: "#contact" },
   ] as const,
 
@@ -47,6 +46,16 @@ export const SITE = {
     body: "I'm focused on growth marketing and marketing analytics, where I get to mix curiosity about people with a love for data. I dig into customer behavior, build dashboards and SQL analyses that drive decisions, and ship small web projects that put those insights to work.",
     closing:
       "Looking for a team where I can help brands understand their audience, sharpen their funnel, and grow with intention.",
+  },
+
+  /**
+   * Short personality bullets shown near the end of the About section so
+   * recruiters see the person behind the resume. Populated from the
+   * follow-up Q&A — keep each line under ~18 words.
+   */
+  funFacts: {
+    label: "Fun facts",
+    items: [] as readonly string[],
   },
 
   tools: {

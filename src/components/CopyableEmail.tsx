@@ -28,7 +28,7 @@ export default function CopyableEmail({ email, className }: Props) {
     <button
       type="button"
       onClick={copy}
-      className={`press inline-flex items-center gap-2 link-ink whitespace-nowrap ${className ?? ""}`}
+      className={`press inline-flex flex-row items-center gap-2 link-ink whitespace-nowrap ${className ?? ""}`}
       aria-label={copied ? "Email copied" : `Copy email ${email}`}
       title={copied ? "Copied" : "Click to copy"}
     >

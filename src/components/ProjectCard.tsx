@@ -13,7 +13,6 @@ export interface ProjectCardProps extends React.HTMLAttributes<HTMLElement> {
   stats?: string[];
   outcome?: string;
   secondaryLink?: { href: string; label: string };
-  featured?: boolean;
 }
 
 const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
@@ -30,7 +29,6 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
       stats,
       outcome,
       secondaryLink,
-      featured,
       ...props
     },
     ref,
@@ -51,12 +49,7 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
           aria-label={`${title} — ${linkText}`}
           className="block press"
         >
-          <div
-            className={cn(
-              "relative aspect-[4/3] overflow-hidden rounded-md bg-[color:var(--color-surface)] border border-[color:var(--color-line)]",
-              featured && "md:aspect-[16/10]",
-            )}
-          >
+          <div className="relative aspect-[4/3] overflow-hidden rounded-md bg-[color:var(--color-surface)] border border-[color:var(--color-line)]">
             <img
               src={imgSrc}
               alt={title}

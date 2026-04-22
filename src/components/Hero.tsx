@@ -4,6 +4,7 @@ import {
   Bookmark,
   FileText,
   Send,
+  Sparkles,
   User,
   type LucideIcon,
 } from "lucide-react";
@@ -18,6 +19,7 @@ const ICONS: Record<string, LucideIcon> = {
   FileText,
   Bookmark,
   Send,
+  Sparkles,
 };
 
 export default function Hero() {
