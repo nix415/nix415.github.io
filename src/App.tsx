@@ -36,7 +36,6 @@ export default function App() {
                 index={p.index}
                 category={p.category}
                 stats={p.stats}
-                outcome={p.outcome}
                 className="stagger-item"
                 style={
                   {

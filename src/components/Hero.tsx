@@ -76,7 +76,7 @@ export default function Hero() {
             <div className="mono text-[10px] uppercase tracking-[0.28em] text-[color:var(--color-muted)]">
               Where you can start
             </div>
-            <ul className="mt-5 divide-y divide-[color:var(--color-line)] border-t border-b border-[color:var(--color-line)]">
+            <ul className="mt-5 space-y-1">
               {SITE.startHere.map((item, i) => {
                 const Icon = ICONS[item.icon] ?? ArrowUpRight;
                 return (

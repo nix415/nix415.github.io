@@ -36,7 +36,7 @@ export const SITE = {
   ] as const,
 
   work: {
-    title: "Selected Work",
+    title: "Work",
     eyebrow: "Work",
     lede: "Three pieces of work, chosen because they each look at growth from a different angle.",
   },

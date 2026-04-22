@@ -11,7 +11,6 @@ export interface ProjectCardProps extends React.HTMLAttributes<HTMLElement> {
   index?: string;
   category?: string;
   stats?: string[];
-  outcome?: string;
   secondaryLink?: { href: string; label: string };
 }
 
@@ -27,7 +26,6 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
       index,
       category,
       stats,
-      outcome,
       secondaryLink,
       ...props
     },
@@ -49,7 +47,7 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
           aria-label={`${title} — ${linkText}`}
           className="block press"
         >
-          <div className="relative aspect-[4/3] overflow-hidden rounded-md bg-[color:var(--color-surface)] border border-[color:var(--color-line)]">
+          <div className="relative aspect-[16/9] overflow-hidden rounded-md bg-[color:var(--color-surface)] border border-[color:var(--color-line)]">
             <img
               src={imgSrc}
               alt={title}
@@ -95,21 +93,9 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
           </div>
         ) : null}
 
-        <p className="mt-4 text-[14px] leading-[1.6] text-[color:var(--color-muted)] max-w-[58ch]">
+        <p className="mt-4 text-[13px] leading-[1.55] text-[color:var(--color-muted)] max-w-[58ch] line-clamp-2">
           {description}
         </p>
-
-        {outcome ? (
-          <p className="mt-3 flex items-start gap-2 text-[13px] leading-[1.55] italic text-[color:var(--color-ink)] max-w-[58ch]">
-            <span
-              aria-hidden="true"
-              className="mono mt-[2px] text-[10.5px] not-italic tracking-[0.2em] text-[color:var(--color-muted)]"
-            >
-              →
-            </span>
-            <span>{outcome}</span>
-          </p>
-        ) : null}
 
         <div className="mt-5 flex items-center gap-5">
           <a
