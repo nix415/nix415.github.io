@@ -12,12 +12,18 @@ export default function Header() {
   const active = useActiveSection(navIds);
 
   return (
-    <header className="sticky top-0 z-30 backdrop-blur bg-[color:var(--color-bg)]/80">
-      <div className="mx-auto max-w-6xl px-6 py-5 flex items-center justify-between">
-        <a href="#home" className="display text-xl tracking-tight press">
-          {SITE.name}
+    <header className="sticky top-0 z-30 backdrop-blur bg-[color:var(--color-bg)]/85 border-b border-[color:var(--color-line)]">
+      <div className="mx-auto max-w-6xl px-6 py-4 flex items-center justify-between gap-6">
+        <a href="#home" className="press flex items-baseline gap-3">
+          <span className="display text-xl leading-none tracking-tight">
+            {SITE.name}
+          </span>
+          <span className="mono text-[10px] uppercase tracking-[0.3em] text-[color:var(--color-muted)] hidden sm:inline">
+            {SITE.issue.number} · {SITE.issue.edition}
+          </span>
         </a>
-        <nav className="flex items-center gap-6 text-sm">
+
+        <nav className="flex items-center gap-5 text-sm mono uppercase tracking-[0.22em]">
           {SITE.nav.map((item) => {
             const id = SECTION_IDS[item] ?? item.toLowerCase();
             const isActive = active === id;
@@ -25,9 +31,9 @@ export default function Header() {
               <a
                 key={item}
                 href={`#${id}`}
-                className={`relative press transition-colors ${
+                className={`relative press transition-colors text-[11px] ${
                   isActive
-                    ? "text-[color:var(--color-ink)] font-medium"
+                    ? "text-[color:var(--color-ink)]"
                     : "text-[color:var(--color-muted)] hover:text-[color:var(--color-ink)]"
                 }`}
               >

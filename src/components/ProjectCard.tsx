@@ -1,17 +1,21 @@
 import * as React from "react";
-import { ArrowRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { cn } from "../lib/utils";
 
-export interface ProjectCardProps extends React.HTMLAttributes<HTMLDivElement> {
+export interface ProjectCardProps extends React.HTMLAttributes<HTMLElement> {
   imgSrc: string;
   title: string;
   description: string;
   link: string;
   linkText?: string;
   secondaryLink?: { href: string; label: string };
+  /** Editorial index number, e.g. "01" */
+  index?: string;
+  /** Mono category label, e.g. "MARKETING · CASE STUDY" */
+  category?: string;
 }
 
-const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
+const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
   (
     {
       className,
@@ -19,8 +23,10 @@ const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
       title,
       description,
       link,
-      linkText = "View Project",
+      linkText = "Read",
       secondaryLink,
+      index,
+      category,
       onClick,
       ...props
     },
@@ -31,47 +37,67 @@ const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
     };
 
     return (
-      <div
+      <article
         ref={ref}
         onClick={(e) => {
           onClick?.(e);
           if (!e.defaultPrevented) openLink();
         }}
         className={cn(
-          "group relative flex cursor-pointer flex-col overflow-hidden rounded-xl press",
-          "border border-[color:var(--color-line)] bg-[color:var(--color-surface)] shadow-sm",
-          "transition-[transform,box-shadow] duration-500 ease-in-out hover:-translate-y-1 hover:shadow-md",
+          "group relative flex flex-col cursor-pointer press",
+          "bg-[color:var(--color-surface)] border border-[color:var(--color-line)]",
+          "transition-[transform,box-shadow,background-color] duration-500 ease-out",
+          "hover:-translate-y-1 hover:shadow-[0_20px_40px_-20px_rgba(27,27,27,0.25)]",
+          "hover:bg-[color:var(--color-bg)]",
           className,
         )}
         {...props}
       >
-        <div className="aspect-square overflow-hidden bg-[color:var(--color-bg)]">
+        {/* Cover image */}
+        <div className="aspect-[4/3] overflow-hidden bg-[color:var(--color-bg)] border-b border-[color:var(--color-line)]">
           <img
             src={imgSrc}
             alt={title}
             loading="lazy"
-            className="h-full w-full object-cover object-top transition-transform duration-700 ease-in-out group-hover:scale-110"
+            className="h-full w-full object-cover object-top transition-transform duration-[900ms] ease-out group-hover:scale-[1.06]"
           />
         </div>
 
-        <div className="flex flex-1 flex-col p-4">
-          <h3 className="display text-base leading-snug transition-colors duration-300 group-hover:text-[color:var(--color-accent)]">
+        {/* Text block */}
+        <div className="relative p-5 flex-1 flex flex-col">
+          {/* Top row — big numeral + category */}
+          <div className="flex items-start justify-between mb-4">
+            {index && (
+              <span className="display-italic text-3xl md:text-4xl leading-none text-[color:var(--color-accent)]">
+                {index}
+              </span>
+            )}
+            {category && (
+              <span className="mono text-[9px] uppercase tracking-[0.28em] text-[color:var(--color-muted)] text-right">
+                {category}
+              </span>
+            )}
+          </div>
+
+          <h3 className="display text-[1.4rem] md:text-[1.55rem] leading-[1.15] tracking-tight transition-colors duration-300 group-hover:text-[color:var(--color-accent)]">
             {title}
           </h3>
-          <p className="mt-2 flex-1 text-[13px] leading-relaxed text-[color:var(--color-muted)]">
+
+          <p className="mt-3 text-[13.5px] leading-relaxed text-[color:var(--color-muted)] flex-1">
             {description}
           </p>
 
-          <div className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-1 text-xs">
+          {/* Rule + CTAs */}
+          <div className="mt-5 pt-4 border-t border-[color:var(--color-line)] flex items-center justify-between gap-3">
             <a
               href={link}
               target="_blank"
               rel="noopener noreferrer"
               onClick={(e) => e.stopPropagation()}
-              className="group/button press inline-flex items-center gap-1.5 font-medium text-[color:var(--color-accent)] transition-all duration-300 hover:underline"
+              className="link-ink inline-flex items-center gap-1.5 text-[13px] font-medium text-[color:var(--color-ink)]"
             >
               {linkText}
-              <ArrowRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/button:translate-x-1" />
+              <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </a>
             {secondaryLink && (
               <a
@@ -79,14 +105,14 @@ const ProjectCard = React.forwardRef<HTMLDivElement, ProjectCardProps>(
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={(e) => e.stopPropagation()}
-                className="text-[color:var(--color-muted)] hover:text-[color:var(--color-ink)]"
+                className="mono text-[10px] uppercase tracking-[0.25em] text-[color:var(--color-muted)] hover:text-[color:var(--color-ink)] transition-colors"
               >
                 {secondaryLink.label} ↗
               </a>
             )}
           </div>
         </div>
-      </div>
+      </article>
     );
   },
 );
