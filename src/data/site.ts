@@ -110,20 +110,6 @@ export const SITE = {
     ] as const,
   },
 
-  /**
-   * Certifications and coursework that recruiters typically filter on.
-   * Keep this short and only list what's actually completed — replace
-   * any placeholder that doesn't apply.
-   */
-  credentials: {
-    label: "Credentials",
-    items: [
-      "HubSpot Inbound Marketing",
-      "Google Analytics",
-      "SQL for Data Analysis",
-    ] as const,
-  },
-
   contact: {
     title: "Let's talk.",
     eyebrow: "Contact",

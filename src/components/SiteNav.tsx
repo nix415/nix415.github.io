@@ -65,7 +65,7 @@ export default function SiteNav() {
                   <button
                     type="button"
                     onClick={() => scrollToId(link.id)}
-                    className="press mono group relative inline-flex items-center gap-2 rounded-full px-3 sm:px-4 py-2 text-[11px] uppercase tracking-[0.2em] hover:bg-[color:var(--color-line)]/60"
+                    className="press mono group relative inline-flex items-center gap-2 rounded-full px-3 sm:px-4 py-2 text-[10px] uppercase tracking-[0.2em] hover:bg-[color:var(--color-line)]/60"
                   >
                     <span
                       aria-hidden="true"

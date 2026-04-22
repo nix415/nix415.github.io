@@ -66,19 +66,19 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
         <div className="mt-5 flex items-start justify-between gap-4">
           <div className="flex items-center gap-3">
             {index ? (
-              <span className="mono text-[11px] uppercase tracking-[0.25em] text-[color:var(--color-muted)]">
+              <span className="mono text-[10px] uppercase tracking-[0.25em] text-[color:var(--color-muted)]">
                 {index}
               </span>
             ) : null}
             {category ? (
-              <span className="mono text-[11px] uppercase tracking-[0.25em] text-[color:var(--color-muted)]">
+              <span className="mono text-[10px] uppercase tracking-[0.25em] text-[color:var(--color-muted)]">
                 {category}
               </span>
             ) : null}
           </div>
         </div>
 
-        <h3 className="mt-2 display text-[clamp(1.5rem,2.5vw,2rem)] leading-[1.1] tracking-[-0.01em] text-[color:var(--color-ink)]">
+        <h3 className="mt-2 display text-[clamp(1.25rem,2vw,1.625rem)] leading-[1.1] tracking-[-0.01em] text-[color:var(--color-ink)]">
           <a
             href={link}
             target={link.startsWith("http") ? "_blank" : undefined}
@@ -90,20 +90,20 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
         </h3>
 
         {stats && stats.length > 0 ? (
-          <div className="mt-3 mono text-[11.5px] uppercase tracking-[0.22em] text-[color:var(--color-muted)]">
+          <div className="mt-3 mono text-[10.5px] uppercase tracking-[0.22em] text-[color:var(--color-muted)]">
             {stats.join(" · ")}
           </div>
         ) : null}
 
-        <p className="mt-4 text-[15px] leading-[1.6] text-[color:var(--color-muted)] max-w-[58ch]">
+        <p className="mt-4 text-[14px] leading-[1.6] text-[color:var(--color-muted)] max-w-[58ch]">
           {description}
         </p>
 
         {outcome ? (
-          <p className="mt-3 flex items-start gap-2 text-[14px] leading-[1.55] italic text-[color:var(--color-ink)] max-w-[58ch]">
+          <p className="mt-3 flex items-start gap-2 text-[13px] leading-[1.55] italic text-[color:var(--color-ink)] max-w-[58ch]">
             <span
               aria-hidden="true"
-              className="mono mt-[2px] text-[11px] not-italic tracking-[0.2em] text-[color:var(--color-muted)]"
+              className="mono mt-[2px] text-[10.5px] not-italic tracking-[0.2em] text-[color:var(--color-muted)]"
             >
               →
             </span>
@@ -116,7 +116,7 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
             href={link}
             target={link.startsWith("http") ? "_blank" : undefined}
             rel={link.startsWith("http") ? "noopener noreferrer" : undefined}
-            className="group/link press inline-flex items-center gap-2 mono text-[11.5px] uppercase tracking-[0.22em] text-[color:var(--color-ink)]"
+            className="group/link press inline-flex items-center gap-2 mono text-[10.5px] uppercase tracking-[0.22em] text-[color:var(--color-ink)]"
           >
             <span className="link-ink">{linkText}</span>
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
@@ -126,7 +126,7 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
               href={secondaryLink.href}
               target={secondaryLink.href.startsWith("http") ? "_blank" : undefined}
               rel={secondaryLink.href.startsWith("http") ? "noopener noreferrer" : undefined}
-              className="group/link2 press inline-flex items-center gap-2 mono text-[11.5px] uppercase tracking-[0.22em] text-[color:var(--color-muted)] hover:text-[color:var(--color-ink)]"
+              className="group/link2 press inline-flex items-center gap-2 mono text-[10.5px] uppercase tracking-[0.22em] text-[color:var(--color-muted)] hover:text-[color:var(--color-ink)]"
             >
               <span className="link-ink">{secondaryLink.label}</span>
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link2:translate-x-0.5 group-hover/link2:-translate-y-0.5" />

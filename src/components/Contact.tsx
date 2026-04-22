@@ -34,7 +34,7 @@ export default function Contact() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
       <div className="md:col-span-7">
-        <p className="display text-[17px] leading-[1.55] text-[color:var(--color-muted)] max-w-[52ch]">
+        <p className="display text-[15px] leading-[1.55] text-[color:var(--color-muted)] max-w-[52ch]">
           Whether it's an internship, a full-time growth role, or a coffee
           chat about marketing analytics — I'd love to hear what you're
           working on.
@@ -44,7 +44,7 @@ export default function Contact() {
       <div className="md:col-span-5">
         <dl className="border-t border-[color:var(--color-line)]">
           <div className="flex flex-row flex-nowrap items-center justify-between gap-4 border-b border-[color:var(--color-line)] py-4">
-            <dt className="mono text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-muted)] shrink-0">
+            <dt className="mono text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-muted)] shrink-0">
               Email
             </dt>
             <dd className="shrink-0 whitespace-nowrap">
@@ -56,7 +56,7 @@ export default function Contact() {
               key={row.label}
               className="flex flex-row flex-nowrap items-center justify-between gap-4 border-b border-[color:var(--color-line)] py-4"
             >
-              <dt className="mono text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-muted)] shrink-0">
+              <dt className="mono text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-muted)] shrink-0">
                 {row.label}
               </dt>
               <dd className="shrink-0 whitespace-nowrap">
@@ -65,7 +65,7 @@ export default function Contact() {
                     href={row.href}
                     target={row.external ? "_blank" : undefined}
                     rel={row.external ? "noopener noreferrer" : undefined}
-                    className="press mono text-sm link-ink inline-flex flex-row items-center gap-2 whitespace-nowrap"
+                    className="press mono text-[12.5px] link-ink inline-flex flex-row items-center gap-2 whitespace-nowrap"
                   >
                     <span>{row.value}</span>
                     <ArrowUpRight
@@ -74,7 +74,7 @@ export default function Contact() {
                     />
                   </a>
                 ) : (
-                  <span className="mono text-sm whitespace-nowrap">{row.value}</span>
+                  <span className="mono text-[12.5px] whitespace-nowrap">{row.value}</span>
                 )}
               </dd>
             </div>

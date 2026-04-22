@@ -33,10 +33,10 @@ export default function Skills() {
                 <Icon className="h-4 w-4" aria-hidden="true" />
               </span>
               <div className="min-w-0">
-                <h3 className="display text-[18px] font-medium tracking-[-0.01em] text-[color:var(--color-ink)]">
+                <h3 className="display text-[16px] font-medium tracking-[-0.01em] text-[color:var(--color-ink)]">
                   {cat.name}
                 </h3>
-                <p className="mt-2 text-[15px] leading-[1.6] text-[color:var(--color-muted)] max-w-[46ch]">
+                <p className="mt-2 text-[13.5px] leading-[1.6] text-[color:var(--color-muted)] max-w-[46ch]">
                   {cat.body}
                 </p>
               </div>
@@ -46,14 +46,14 @@ export default function Skills() {
       </div>
 
       <div>
-        <h3 className="display text-[16px] font-medium tracking-[-0.01em] text-[color:var(--color-ink)]">
+        <h3 className="display text-[14px] font-medium tracking-[-0.01em] text-[color:var(--color-ink)]">
           {SITE.skills.capabilitiesLabel}
         </h3>
         <ul className="mt-4 flex flex-wrap gap-2">
           {SITE.skills.capabilities.map((cap) => (
             <li
               key={cap}
-              className="mono text-[11px] tracking-[0.14em] text-[color:var(--color-ink)] border border-[color:var(--color-line)] rounded-md px-2.5 py-1 bg-[color:var(--color-surface)]"
+              className="mono text-[10px] tracking-[0.14em] text-[color:var(--color-ink)] border border-[color:var(--color-line)] rounded-md px-2.5 py-1 bg-[color:var(--color-surface)]"
             >
               {cap}
             </li>

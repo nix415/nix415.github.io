@@ -43,18 +43,18 @@ export default function Section({
         {eyebrow ? (
           <div className="mb-6 flex items-center gap-3">
             <span className="dash" aria-hidden="true" />
-            <span className="mono text-[10.5px] uppercase tracking-[0.28em] text-[color:var(--color-muted)]">
+            <span className="mono text-[10px] uppercase tracking-[0.28em] text-[color:var(--color-muted)]">
               {eyebrow}
             </span>
           </div>
         ) : null}
 
-        <h2 className="display text-[clamp(2rem,5vw,3.5rem)] leading-[1.05] tracking-[-0.02em] text-[color:var(--color-ink)]">
+        <h2 className="display text-[clamp(1.75rem,4vw,3rem)] leading-[1.05] tracking-[-0.02em] text-[color:var(--color-ink)]">
           {title}
         </h2>
 
         {lede ? (
-          <p className="mt-4 max-w-[62ch] display text-[17px] leading-[1.55] text-[color:var(--color-muted)]">
+          <p className="mt-4 max-w-[62ch] display text-[15px] leading-[1.55] text-[color:var(--color-muted)]">
             {lede}
           </p>
         ) : null}

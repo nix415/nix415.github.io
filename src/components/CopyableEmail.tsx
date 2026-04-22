@@ -32,7 +32,7 @@ export default function CopyableEmail({ email, className }: Props) {
       aria-label={copied ? "Email copied" : `Copy email ${email}`}
       title={copied ? "Copied" : "Click to copy"}
     >
-      <span className="mono text-sm">{email}</span>
+      <span className="mono text-[12.5px]">{email}</span>
       {copied ? (
         <Check className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
       ) : (
