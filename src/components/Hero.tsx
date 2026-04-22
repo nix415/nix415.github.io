@@ -8,7 +8,6 @@ import {
   type LucideIcon,
 } from "lucide-react";
 import { SITE } from "../data/site";
-import AvailabilityPill from "./AvailabilityPill";
 import LetterRise from "./LetterRise";
 import CurrentlyLine from "./CurrentlyLine";
 import MagneticCTA from "./MagneticCTA";
@@ -27,14 +26,17 @@ export default function Hero() {
   return (
     <section
       id="top"
-      className="relative px-6 pt-32 pb-20 sm:pt-36 md:pt-40 md:pb-28"
+      className="relative px-6 pt-24 pb-16 sm:pt-28 md:pt-28 md:pb-20"
     >
       <div className="mx-auto max-w-6xl">
-        <div className="hero-rise" style={{ ["--hero-delay" as never]: "0ms" } as CSSProperties}>
-          <AvailabilityPill text={SITE.availability} />
+        <div
+          className="hero-rise display text-[18px] sm:text-[20px] leading-tight tracking-[-0.01em] text-[color:var(--color-ink)]"
+          style={{ ["--hero-delay" as never]: "0ms" } as CSSProperties}
+        >
+          {SITE.name}
         </div>
 
-        <h1 className="display mt-8 leading-[0.95] tracking-[-0.02em] text-[clamp(3.25rem,12vw,9rem)]">
+        <h1 className="display mt-5 leading-[0.95] tracking-[-0.02em] text-[clamp(3.25rem,12vw,9rem)]">
           <span className="block">
             <LetterRise text={SITE.firstName} baseDelay={120} />
           </span>
@@ -43,16 +45,16 @@ export default function Hero() {
           </span>
         </h1>
 
-        <div className="mt-16 md:mt-24 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
+        <div className="mt-10 md:mt-12 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14">
           <div
             className="md:col-span-7 hero-rise"
             style={{ ["--hero-delay" as never]: "650ms" } as CSSProperties}
           >
-            <p className="display text-[17px] sm:text-[19px] leading-[1.55] text-[color:var(--color-ink)] max-w-[52ch]">
+            <p className="display text-[18px] sm:text-[20px] leading-[1.55] text-[color:var(--color-ink)] max-w-[52ch]">
               {SITE.hero.bio}
             </p>
 
-            <div className="mt-10 flex items-start gap-6">
+            <div className="mt-6 flex items-start gap-6">
               <div
                 ref={portrait.ref}
                 className="shrink-0 h-20 w-20 rounded-full overflow-hidden border border-[color:var(--color-line)] bg-[color:var(--color-surface)]"

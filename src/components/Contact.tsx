@@ -34,10 +34,7 @@ export default function Contact() {
   return (
     <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-16">
       <div className="md:col-span-7">
-        <p className="display text-[clamp(2.25rem,6vw,4rem)] leading-[1.02] tracking-[-0.02em] text-[color:var(--color-ink)]">
-          {SITE.contact.title}
-        </p>
-        <p className="mt-6 display text-[17px] leading-[1.55] text-[color:var(--color-muted)] max-w-[52ch]">
+        <p className="display text-[17px] leading-[1.55] text-[color:var(--color-muted)] max-w-[52ch]">
           Whether it's an internship, a full-time growth role, or a coffee
           chat about marketing analytics — I'd love to hear what you're
           working on.
@@ -45,10 +42,7 @@ export default function Contact() {
       </div>
 
       <div className="md:col-span-5">
-        <div className="mono text-[10.5px] uppercase tracking-[0.28em] text-[color:var(--color-muted)]">
-          Colophon
-        </div>
-        <dl className="mt-5 border-t border-[color:var(--color-line)]">
+        <dl className="border-t border-[color:var(--color-line)]">
           <div className="flex items-center justify-between gap-4 border-b border-[color:var(--color-line)] py-4">
             <dt className="mono text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-muted)]">
               Email

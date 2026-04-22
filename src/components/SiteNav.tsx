@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Home, Moon, Sun } from "lucide-react";
 import { useActiveSection } from "../hooks/useActiveSection";
 import { useTheme } from "../hooks/useTheme";
-import { SITE } from "../data/site";
 
 type NavLink = {
   id: string;
@@ -86,16 +85,6 @@ export default function SiteNav() {
                 </li>
               );
             })}
-            <li>
-              <a
-                href={SITE.contact.resumeHref}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="press mono inline-flex items-center rounded-full px-3 sm:px-4 py-2 text-[11px] uppercase tracking-[0.2em] opacity-80 hover:opacity-100 hover:bg-[color:var(--color-line)]/60"
-              >
-                Resume
-              </a>
-            </li>
           </ul>
 
           <div className="mx-1 h-5 w-px bg-[color:var(--color-line)]" />

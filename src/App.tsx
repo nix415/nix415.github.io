@@ -85,21 +85,12 @@ export default function App() {
 
       <footer className="border-t border-[color:var(--color-line)]">
         <div className="mx-auto max-w-6xl px-6 py-10 grid md:grid-cols-3 gap-6 items-end">
-          <div className="mono text-[10.5px] uppercase tracking-[0.28em] text-[color:var(--color-muted)]">
-            Colophon
-          </div>
+          <div />
           <div className="mono text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-muted)] md:text-center">
             {SITE.footer.updated} · {SITE.name}
           </div>
           <div className="flex md:justify-end items-center gap-4 mono text-[11px] uppercase tracking-[0.22em] text-[color:var(--color-muted)]">
             <span>© {new Date().getFullYear()} {SITE.name}</span>
-            <button
-              type="button"
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="link-ink press hover:text-[color:var(--color-ink)]"
-            >
-              Back to top ↑
-            </button>
           </div>
         </div>
       </footer>
