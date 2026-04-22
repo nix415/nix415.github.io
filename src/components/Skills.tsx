@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import {
   BarChart3,
   Code2,
@@ -25,10 +26,14 @@ export default function Skills() {
   return (
     <div className="space-y-14">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-12">
-        {SITE.skills.categories.map((cat) => {
+        {SITE.skills.categories.map((cat, i) => {
           const Icon = ICONS[cat.icon] ?? Layers;
           return (
-            <div key={cat.name} className="flex items-start gap-4">
+            <div
+              key={cat.name}
+              className="stagger-item flex items-start gap-4"
+              style={{ ["--stagger-delay" as never]: `${120 + i * 110}ms` } as CSSProperties}
+            >
               <span className="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-md border border-[color:var(--color-line)] bg-[color:var(--color-surface)] text-[color:var(--color-ink)]">
                 <Icon className="h-4 w-4" aria-hidden="true" />
               </span>
@@ -50,10 +55,11 @@ export default function Skills() {
           {SITE.skills.capabilitiesLabel}
         </h3>
         <ul className="mt-4 flex flex-wrap gap-2">
-          {SITE.skills.capabilities.map((cap) => (
+          {SITE.skills.capabilities.map((cap, i) => (
             <li
               key={cap}
-              className="mono text-[10px] tracking-[0.14em] text-[color:var(--color-ink)] border border-[color:var(--color-line)] rounded-md px-2.5 py-1 bg-[color:var(--color-surface)]"
+              className="stagger-item mono text-[9px] tracking-[0.14em] text-[color:var(--color-ink)] border border-[color:var(--color-line)] rounded px-2 py-[3px] bg-[color:var(--color-surface)]"
+              style={{ ["--stagger-delay" as never]: `${240 + i * 35}ms` } as CSSProperties}
             >
               {cap}
             </li>

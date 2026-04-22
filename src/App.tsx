@@ -36,6 +36,7 @@ export default function App() {
                 index={p.index}
                 category={p.category}
                 stats={p.stats}
+                imgPosition={p.imgPosition}
                 className="stagger-item"
                 style={
                   {
@@ -53,10 +54,16 @@ export default function App() {
           title={SITE.about.title}
         >
           <div className="max-w-3xl">
-            <p className="display text-[15px] sm:text-[17px] leading-[1.6] text-[color:var(--color-ink)] max-w-[58ch]">
+            <p
+              className="stagger-item display text-[15px] sm:text-[17px] leading-[1.6] text-[color:var(--color-ink)] max-w-[58ch]"
+              style={{ ["--stagger-delay" as never]: "120ms" } as CSSProperties}
+            >
               {SITE.about.body}
             </p>
-            <p className="mt-6 display text-[14px] sm:text-[15px] leading-[1.6] text-[color:var(--color-muted)] max-w-[58ch]">
+            <p
+              className="stagger-item mt-6 display text-[14px] sm:text-[15px] leading-[1.6] text-[color:var(--color-muted)] max-w-[58ch]"
+              style={{ ["--stagger-delay" as never]: "240ms" } as CSSProperties}
+            >
               {SITE.about.closing}
             </p>
 
@@ -69,7 +76,8 @@ export default function App() {
                   {SITE.funFacts.items.map((fact, i) => (
                     <li
                       key={i}
-                      className="flex items-start gap-3 display text-[14px] leading-[1.6] text-[color:var(--color-ink)]"
+                      className="stagger-item flex items-start gap-3 display text-[14px] leading-[1.6] text-[color:var(--color-ink)]"
+                      style={{ ["--stagger-delay" as never]: `${360 + i * 90}ms` } as CSSProperties}
                     >
                       <span
                         aria-hidden="true"

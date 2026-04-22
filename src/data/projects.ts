@@ -16,11 +16,9 @@ export type Project = {
   outcome?: string;
   /** Marks the lead project so the layout can give it more real-estate. */
   featured?: boolean;
+  /** Optional object-position override for cover images that need manual framing. */
+  imgPosition?: string;
 };
-
-function previewFor(url: string): string {
-  return `https://image.thum.io/get/width/1200/crop/800/${url}`;
-}
 
 export const PROJECTS: Project[] = [
   {
@@ -29,7 +27,7 @@ export const PROJECTS: Project[] = [
     name: "SQL Marketing Portfolio",
     description:
       "Five SQL analyses on Kaggle's Customer Segmentation Data — acquisition, funnel, cohort retention, revenue ROI, and RFM segmentation. The questions a growth team asks every week.",
-    imgSrc: previewFor("sql-marketing-portfolio-site.vercel.app"),
+    imgSrc: "/images/sql-marketing-portfolio.png",
     link: "https://sql-marketing-portfolio-site.vercel.app",
     linkText: "Open project",
     secondaryLink: {
@@ -77,6 +75,7 @@ export const PROJECTS: Project[] = [
     description:
       "National MLB marketing case deck covering audience segmentation, fan engagement strategy, and growth opportunities for a younger demographic.",
     imgSrc: "/images/ucsb-mlb-cover.png",
+    imgPosition: "50% 75%",
     link: "/pdfs/ucsb-mlb-case-competition.pdf",
     linkText: "View deck",
     outcome:

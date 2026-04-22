@@ -12,6 +12,7 @@ export interface ProjectCardProps extends React.HTMLAttributes<HTMLElement> {
   category?: string;
   stats?: string[];
   secondaryLink?: { href: string; label: string };
+  imgPosition?: string;
 }
 
 const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
@@ -27,6 +28,7 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
       category,
       stats,
       secondaryLink,
+      imgPosition,
       ...props
     },
     ref,
@@ -52,6 +54,7 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
               src={imgSrc}
               alt={title}
               loading="lazy"
+              style={imgPosition ? { objectPosition: imgPosition } : undefined}
               className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.03]"
             />
             <div

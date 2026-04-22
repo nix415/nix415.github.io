@@ -44,6 +44,21 @@ export default function Hero() {
           {SITE.tagline}
         </div>
 
+        <div
+          className="hero-rise mt-2 flex flex-wrap items-center gap-x-3 gap-y-1 mono text-[10px] uppercase tracking-[0.22em] text-[color:var(--color-ink)]"
+          style={{ ["--hero-delay" as never]: "580ms" } as CSSProperties}
+        >
+          {SITE.quickFacts.map((fact, i) => (
+            <span key={fact} className="flex items-center gap-3">
+              <span
+                aria-hidden="true"
+                className={`h-1 w-1 rounded-full ${i === 0 ? "bg-[color:var(--color-accent-strong,#b45047)] animate-pulse" : "bg-[color:var(--color-line)]"}`}
+              />
+              <span>{fact}</span>
+            </span>
+          ))}
+        </div>
+
         <div className="mt-8 md:mt-10 grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-14 items-start">
           <div
             className="md:col-span-7 hero-rise"
@@ -63,7 +78,7 @@ export default function Hero() {
                   src="/headshot.png"
                   alt="Nixon Tse portrait"
                   className="h-full w-full object-cover"
-                  style={{ objectPosition: "50% 15%" }}
+                  style={{ objectPosition: "50% 0%" }}
                   loading="eager"
                 />
               </div>

@@ -13,6 +13,16 @@ export const SITE = {
    */
   tagline: "UCSB '26 · Communication",
 
+  /**
+   * Short recruiter-facing answers to "is he available / where / what role"
+   * rendered as a mono band directly under the tagline.
+   */
+  quickFacts: [
+    "Available Spring 2026",
+    "San Francisco / Remote",
+    "Growth & Marketing Analytics",
+  ] as const,
+
   hero: {
     bio: "One of my deepest joys comes from turning customer curiosity into work people actually notice — across growth marketing, marketing analytics, and small digital experiments.",
     roles: ["Growth Marketing", "Marketing Analytics"] as const,
