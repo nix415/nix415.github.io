@@ -86,16 +86,7 @@ export default function App() {
                 </div>
               ) : null}
             </div>
-            <div className="md:col-span-5 space-y-10">
-              <div>
-                <div className="mono text-[10.5px] uppercase tracking-[0.28em] text-[color:var(--color-muted)]">
-                  Tools &amp; Subjects
-                </div>
-                <div className="mt-4">
-                  <Skills />
-                </div>
-              </div>
-
+            <div className="md:col-span-5">
               <div>
                 <div className="mono text-[10.5px] uppercase tracking-[0.28em] text-[color:var(--color-muted)]">
                   {SITE.credentials.label}
@@ -121,6 +112,14 @@ export default function App() {
               </div>
             </div>
           </div>
+        </Section>
+
+        <Section
+          id="skills"
+          eyebrow={SITE.skills.eyebrow}
+          title={SITE.skills.title}
+        >
+          <Skills />
         </Section>
 
         <Section

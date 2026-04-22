@@ -29,8 +29,9 @@ export const SITE = {
    * `icon` names map to lucide-react exports in <Hero>.
    */
   startHere: [
+    { icon: "User", label: "About me", target: "#about" },
     { icon: "FileText", label: "Browse my projects", target: "#work" },
-    { icon: "Sparkles", label: "Learn fun facts about me", target: "#about" },
+    { icon: "Layers", label: "What I can offer", target: "#skills" },
     { icon: "Send", label: "Get in touch", target: "#contact" },
   ] as const,
 
@@ -58,10 +59,38 @@ export const SITE = {
     items: [] as readonly string[],
   },
 
-  tools: {
-    title: "Tools & Subjects",
-    eyebrow: "Tools",
-    items: [
+  /**
+   * New Skills section (id="skills"): four category cards + a capability
+   * chip strip. `icon` maps to a lucide-react icon name registered in
+   * <SkillsSection>.
+   */
+  skills: {
+    eyebrow: "Skills",
+    title: "Skills",
+    categories: [
+      {
+        icon: "BarChart3",
+        name: "Marketing Analytics",
+        body: "I pull customer and campaign data with SQL and Python, then turn it into funnels, cohorts, and segments that drive real decisions — not just dashboards that sit on a wall.",
+      },
+      {
+        icon: "TrendingUp",
+        name: "Growth Strategy",
+        body: "From audience research to positioning and channel planning, I build campaigns that help brands reach the right people — not just more people.",
+      },
+      {
+        icon: "Megaphone",
+        name: "Content & Audience",
+        body: "Ran social content for AAPI audiences during my internship at Asian Founded. I pair community insight with performance data so posts actually earn attention.",
+      },
+      {
+        icon: "Code2",
+        name: "Web & Data Tools",
+        body: "Ship small web projects in React + Tailwind, build dashboards, and wire up tracking so the whole team can see what's working in real time.",
+      },
+    ] as const,
+    capabilitiesLabel: "All Capabilities",
+    capabilities: [
       "SQL",
       "Python",
       "Tableau",
@@ -72,6 +101,12 @@ export const SITE = {
       "Audience Research",
       "React",
       "Excel",
+      "Campaign Strategy",
+      "Positioning",
+      "Funnel Analysis",
+      "RFM Segmentation",
+      "Social Content",
+      "Dashboards",
     ] as const,
   },
 

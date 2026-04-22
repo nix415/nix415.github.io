@@ -1,25 +1,22 @@
 import type { CSSProperties } from "react";
 import {
   ArrowUpRight,
-  Bookmark,
   FileText,
+  Layers,
   Send,
-  Sparkles,
   User,
   type LucideIcon,
 } from "lucide-react";
 import { SITE } from "../data/site";
 import LetterRise from "./LetterRise";
-import CurrentlyLine from "./CurrentlyLine";
 import MagneticCTA from "./MagneticCTA";
 import { useParallax } from "../hooks/useParallax";
 
 const ICONS: Record<string, LucideIcon> = {
   User,
   FileText,
-  Bookmark,
+  Layers,
   Send,
-  Sparkles,
 };
 
 export default function Hero() {
@@ -56,33 +53,18 @@ export default function Hero() {
               {SITE.hero.bio}
             </p>
 
-            <div className="mt-6 flex items-start gap-6">
+            <div className="mt-6">
               <div
                 ref={portrait.ref}
-                className="shrink-0 h-20 w-20 rounded-full overflow-hidden border border-[color:var(--color-line)] bg-[color:var(--color-surface)]"
+                className="h-20 w-20 rounded-full overflow-hidden border border-[color:var(--color-line)] bg-[color:var(--color-surface)]"
                 style={{ transform: `translateY(${portrait.offset}px)` }}
               >
                 <img
-                  src="/headshot.jpg"
+                  src="/headshot.png"
                   alt="Nixon Tse portrait"
                   className="h-full w-full object-cover"
                   loading="eager"
                 />
-              </div>
-              <div className="flex-1 pt-1">
-                <div className="space-y-1">
-                  {SITE.hero.roles.map((role) => (
-                    <div
-                      key={role}
-                      className="mono text-[11px] uppercase tracking-[0.28em] text-[color:var(--color-muted)]"
-                    >
-                      {role}
-                    </div>
-                  ))}
-                </div>
-                <div className="mt-3">
-                  <CurrentlyLine items={SITE.hero.currently} />
-                </div>
               </div>
             </div>
           </div>
