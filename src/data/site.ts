@@ -11,7 +11,7 @@ export const SITE = {
    * Short 2-second identity line under the hero name so recruiters know
    * the school, major, and target roles without reading a paragraph.
    */
-  tagline: "UCSB '26 · Communication · Growth Marketing + Analytics",
+  tagline: "UCSB '26 · Communication",
 
   hero: {
     bio: "One of my deepest joys comes from turning customer curiosity into work people actually notice — across growth marketing, marketing analytics, and small digital experiments.",

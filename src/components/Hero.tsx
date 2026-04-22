@@ -63,6 +63,7 @@ export default function Hero() {
                   src="/headshot.png"
                   alt="Nixon Tse portrait"
                   className="h-full w-full object-cover"
+                  style={{ objectPosition: "50% 15%" }}
                   loading="eager"
                 />
               </div>
@@ -87,7 +88,7 @@ export default function Hero() {
                       innerClassName="w-full"
                       ariaLabel={item.label}
                     >
-                      <span className="flex w-full items-center gap-4 py-4">
+                      <span className="flex w-full items-center gap-4 py-1.5">
                         <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-[color:var(--color-line)] text-[color:var(--color-ink)] transition-colors group-hover:bg-[color:var(--color-ink)] group-hover:text-[color:var(--color-bg)]">
                           <Icon className="h-4 w-4" aria-hidden="true" />
                         </span>

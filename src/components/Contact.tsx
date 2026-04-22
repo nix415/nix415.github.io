@@ -23,12 +23,6 @@ export default function Contact() {
       href: SITE.contact.linkedin,
       external: true,
     },
-    {
-      label: "Resume",
-      value: "Download PDF",
-      href: SITE.contact.resumeHref,
-      external: true,
-    },
   ];
 
   return (
