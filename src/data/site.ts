@@ -11,14 +11,14 @@ export const SITE = {
    * Short 2-second identity line under the hero name so recruiters know
    * the school, major, and target roles without reading a paragraph.
    */
-  tagline: "UCSB '26 · Communication",
+  tagline: "UCSB '26 · Communication · Technology Management Certificate",
 
   /**
    * Short recruiter-facing answers to "is he available / where / what role"
    * rendered as a mono band directly under the tagline.
    */
   quickFacts: [
-    "San Francisco / Remote",
+    "San Francisco",
     "Growth & Marketing Analytics",
   ] as const,
 

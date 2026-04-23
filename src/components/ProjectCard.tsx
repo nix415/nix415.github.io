@@ -59,7 +59,7 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
               style={imgPosition ? { objectPosition: imgPosition } : undefined}
               className={cn(
                 "h-full w-full transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.03]",
-                imgFit === "contain" ? "object-contain p-8" : "object-cover",
+                imgFit === "contain" ? "object-contain" : "object-cover",
               )}
             />
             <div

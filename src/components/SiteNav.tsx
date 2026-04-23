@@ -22,11 +22,32 @@ const LINKS: NavLink[] = [
  */
 export default function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const active = useActiveSection(LINKS.map((l) => l.id));
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    let lastY = window.scrollY;
+    const HIDE_AFTER = 120;
+    const DELTA = 6;
+
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 40);
+
+      const diff = y - lastY;
+      if (Math.abs(diff) < DELTA) return;
+
+      if (y < HIDE_AFTER) {
+        setHidden(false);
+      } else if (diff > 0) {
+        setHidden(true);
+      } else {
+        setHidden(false);
+      }
+      lastY = y;
+    };
+
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -39,7 +60,10 @@ export default function SiteNav() {
   };
 
   return (
-    <header className="fixed top-4 left-0 right-0 z-50 pointer-events-none">
+    <header
+      data-hidden={hidden ? "true" : "false"}
+      className="fixed top-4 left-0 right-0 z-50 pointer-events-none transition-transform duration-300 ease-out data-[hidden=true]:-translate-y-[calc(100%+1rem)]"
+    >
       <div className="mx-auto w-fit pointer-events-auto">
         <nav
           aria-label="Primary"
