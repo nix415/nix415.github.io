@@ -37,6 +37,7 @@ export default function App() {
                 category={p.category}
                 stats={p.stats}
                 imgPosition={p.imgPosition}
+                imgFit={p.imgFit}
                 className="stagger-item"
                 style={
                   {

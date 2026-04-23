@@ -18,6 +18,8 @@ export type Project = {
   featured?: boolean;
   /** Optional object-position override for cover images that need manual framing. */
   imgPosition?: string;
+  /** Image fit mode. Defaults to "cover"; use "contain" for logos/marks that shouldn't be cropped. */
+  imgFit?: "cover" | "contain";
 };
 
 export const PROJECTS: Project[] = [
@@ -73,7 +75,7 @@ export const PROJECTS: Project[] = [
     description:
       "National MLB marketing case deck covering audience segmentation, fan engagement strategy, and growth opportunities for a younger demographic.",
     imgSrc: "/images/ucsb-mlb-cover.png",
-    imgPosition: "50% 25%",
+    imgFit: "contain",
     link: "/pdfs/ucsb-mlb-case-competition.pdf",
     linkText: "View deck",
     outcome:

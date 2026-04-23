@@ -13,6 +13,7 @@ export interface ProjectCardProps extends React.HTMLAttributes<HTMLElement> {
   stats?: string[];
   secondaryLink?: { href: string; label: string };
   imgPosition?: string;
+  imgFit?: "cover" | "contain";
 }
 
 const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
@@ -29,6 +30,7 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
       stats,
       secondaryLink,
       imgPosition,
+      imgFit = "cover",
       ...props
     },
     ref,
@@ -55,7 +57,10 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
               alt={title}
               loading="lazy"
               style={imgPosition ? { objectPosition: imgPosition } : undefined}
-              className="h-full w-full object-cover transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.03]"
+              className={cn(
+                "h-full w-full transition-transform duration-700 ease-[cubic-bezier(.22,1,.36,1)] group-hover:scale-[1.03]",
+                imgFit === "contain" ? "object-contain p-8" : "object-cover",
+              )}
             />
             <div
               aria-hidden="true"

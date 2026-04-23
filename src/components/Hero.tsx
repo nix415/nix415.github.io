@@ -75,10 +75,10 @@ export default function Hero() {
                 style={{ transform: `translateY(${portrait.offset}px)` }}
               >
                 <img
-                  src="/headshot.png"
+                  src="/headshot.jpg"
                   alt="Nixon Tse portrait"
                   className="h-full w-full object-cover"
-                  style={{ objectPosition: "50% 0%" }}
+                  style={{ objectPosition: "50% 28%" }}
                   loading="eager"
                 />
               </div>
