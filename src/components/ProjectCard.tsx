@@ -1,6 +1,47 @@
 import * as React from "react";
 import { ArrowUpRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import { cn } from "../lib/utils";
+
+/** True for in-app routes (e.g. "/work/ucsb-mlb") that should navigate via
+ *  react-router. False for external URLs and static assets like /pdfs/foo.pdf
+ *  that need a real anchor request. */
+function isInternalRoute(href: string): boolean {
+  if (!href.startsWith("/")) return false;
+  if (href.startsWith("//")) return false;
+  // Anything that points at a real file in /public — let the browser handle it.
+  if (/\.[a-zA-Z0-9]{2,5}(\?|#|$)/.test(href)) return false;
+  return true;
+}
+
+type SmartLinkProps = {
+  href: string;
+  className?: string;
+  ariaLabel?: string;
+  children: React.ReactNode;
+};
+
+function SmartLink({ href, className, ariaLabel, children }: SmartLinkProps) {
+  if (isInternalRoute(href)) {
+    return (
+      <Link to={href} className={className} aria-label={ariaLabel}>
+        {children}
+      </Link>
+    );
+  }
+  const external = href.startsWith("http");
+  return (
+    <a
+      href={href}
+      target={external ? "_blank" : undefined}
+      rel={external ? "noopener noreferrer" : undefined}
+      className={className}
+      aria-label={ariaLabel}
+    >
+      {children}
+    </a>
+  );
+}
 
 export interface ProjectCardProps extends React.HTMLAttributes<HTMLElement> {
   imgSrc: string;
@@ -44,11 +85,9 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
         )}
         {...props}
       >
-        <a
+        <SmartLink
           href={link}
-          target={link.startsWith("http") ? "_blank" : undefined}
-          rel={link.startsWith("http") ? "noopener noreferrer" : undefined}
-          aria-label={`${title} — ${linkText}`}
+          ariaLabel={`${title} — ${linkText}`}
           className="block press"
         >
           <div className="relative aspect-[16/9] overflow-hidden rounded-md bg-[color:var(--color-surface)] border border-[color:var(--color-line)]">
@@ -67,7 +106,7 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
               className="pointer-events-none absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100"
             />
           </div>
-        </a>
+        </SmartLink>
 
         <div className="mt-5 flex items-start justify-between gap-4">
           <div className="flex items-center gap-3">
@@ -85,14 +124,9 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
         </div>
 
         <h3 className="mt-2 display text-[clamp(1.25rem,2vw,1.625rem)] leading-[1.1] tracking-[-0.01em] text-[color:var(--color-ink)]">
-          <a
-            href={link}
-            target={link.startsWith("http") ? "_blank" : undefined}
-            rel={link.startsWith("http") ? "noopener noreferrer" : undefined}
-            className="link-ink"
-          >
+          <SmartLink href={link} className="link-ink">
             {title}
-          </a>
+          </SmartLink>
         </h3>
 
         {stats && stats.length > 0 ? (
@@ -106,25 +140,21 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
         </p>
 
         <div className="mt-5 flex items-center gap-5">
-          <a
+          <SmartLink
             href={link}
-            target={link.startsWith("http") ? "_blank" : undefined}
-            rel={link.startsWith("http") ? "noopener noreferrer" : undefined}
             className="group/link press inline-flex items-center gap-2 mono text-[10.5px] uppercase tracking-[0.22em] text-[color:var(--color-ink)]"
           >
             <span className="link-ink">{linkText}</span>
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-          </a>
+          </SmartLink>
           {secondaryLink ? (
-            <a
+            <SmartLink
               href={secondaryLink.href}
-              target={secondaryLink.href.startsWith("http") ? "_blank" : undefined}
-              rel={secondaryLink.href.startsWith("http") ? "noopener noreferrer" : undefined}
               className="group/link2 press inline-flex items-center gap-2 mono text-[10.5px] uppercase tracking-[0.22em] text-[color:var(--color-muted)] hover:text-[color:var(--color-ink)]"
             >
               <span className="link-ink">{secondaryLink.label}</span>
               <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300 group-hover/link2:translate-x-0.5 group-hover/link2:-translate-y-0.5" />
-            </a>
+            </SmartLink>
           ) : null}
         </div>
       </article>

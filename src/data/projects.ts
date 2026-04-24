@@ -76,8 +76,12 @@ export const PROJECTS: Project[] = [
       "National MLB marketing case deck covering audience segmentation, fan engagement strategy, and growth opportunities for a younger demographic.",
     imgSrc: "/images/ucsb-mlb-cover.png",
     imgFit: "contain",
-    link: "/pdfs/ucsb-mlb-case-competition.pdf",
-    linkText: "View deck",
+    link: "/work/ucsb-mlb",
+    linkText: "Read case study",
+    secondaryLink: {
+      href: "/pdfs/ucsb-mlb-case-competition.pdf",
+      label: "View deck",
+    },
     outcome:
       "Audience segmentation + fan-growth strategy aimed at reaching a younger MLB demographic.",
   },

@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { Home, Moon, Sun } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { useActiveSection } from "../hooks/useActiveSection";
 import { useTheme } from "../hooks/useTheme";
 
@@ -23,7 +24,10 @@ const LINKS: NavLink[] = [
 export default function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
   const [hidden, setHidden] = useState(false);
-  const active = useActiveSection(LINKS.map((l) => l.id));
+  const location = useLocation();
+  const navigate = useNavigate();
+  const onHome = location.pathname === "/";
+  const active = useActiveSection(onHome ? LINKS.map((l) => l.id) : []);
   const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
@@ -54,10 +58,35 @@ export default function SiteNav() {
   }, []);
 
   const scrollToId = (id: string) => {
+    if (!onHome) {
+      navigate(`/#${id}`);
+      return;
+    }
     const el = document.getElementById(id);
     if (!el) return;
     el.scrollIntoView({ behavior: "smooth", block: "start" });
   };
+
+  const goHome = () => {
+    if (!onHome) {
+      navigate("/");
+      return;
+    }
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  // When arriving at "/" with a hash (e.g. /#work from the case study page),
+  // scroll the matching section into view after the homepage mounts.
+  useEffect(() => {
+    if (!onHome) return;
+    if (!location.hash) return;
+    const id = location.hash.slice(1);
+    const el = document.getElementById(id);
+    if (!el) return;
+    requestAnimationFrame(() => {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, [onHome, location.hash, location.pathname]);
 
   return (
     <header
@@ -72,9 +101,9 @@ export default function SiteNav() {
         >
           <button
             type="button"
-            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            onClick={goHome}
             className="press inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-[color:var(--color-line)]/60"
-            aria-label="Back to top"
+            aria-label={onHome ? "Back to top" : "Back to home"}
           >
             <Home className="h-4 w-4" />
           </button>
