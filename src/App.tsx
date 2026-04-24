@@ -3,6 +3,7 @@ import SiteNav from "./components/SiteNav";
 import ScrollProgressBar from "./components/ScrollProgressBar";
 import Home from "./pages/Home";
 import CaseStudyMlb from "./pages/CaseStudyMlb";
+import CaseStudyKylesKitchen from "./pages/CaseStudyKylesKitchen";
 import { SITE } from "./data/site";
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/work/ucsb-mlb" element={<CaseStudyMlb />} />
+        <Route path="/work/kyles-kitchen" element={<CaseStudyKylesKitchen />} />
       </Routes>
 
       <footer className="border-t border-[color:var(--color-line)]">

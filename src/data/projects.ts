@@ -63,8 +63,12 @@ export const PROJECTS: Project[] = [
     description:
       "Collegiate marketing report for Kyle's Kitchen — positioning, audience research, and a campaign roadmap built for the American Marketing Association at UCSB.",
     imgSrc: "/images/kyles-kitchen-cover.png",
-    link: "/pdfs/kyles-kitchen-marketing-report-2026.pdf",
-    linkText: "Read report",
+    link: "/work/kyles-kitchen",
+    linkText: "Read case study",
+    secondaryLink: {
+      href: "/pdfs/kyles-kitchen-marketing-report-2026.pdf",
+      label: "Read report",
+    },
     outcome:
       "Delivered a full positioning + campaign roadmap for a UCSB AMA client engagement.",
   },
