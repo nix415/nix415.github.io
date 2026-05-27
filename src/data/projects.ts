@@ -6,7 +6,6 @@ export type Project = {
   linkText?: string;
   secondaryLink?: { href: string; label: string };
   index?: string;
-  category?: string;
   /** Editorial one-line stat strip rendered under the title. */
   stats?: string[];
   /**
@@ -25,7 +24,6 @@ export type Project = {
 export const PROJECTS: Project[] = [
   {
     index: "01",
-    category: "Analytics · SQL",
     name: "SQL Marketing Portfolio",
     description:
       "Five SQL analyses on Kaggle's Customer Segmentation Data — acquisition, funnel, cohort retention, revenue ROI, and RFM segmentation. The questions a growth team asks every week.",
@@ -42,7 +40,6 @@ export const PROJECTS: Project[] = [
   },
   {
     index: "02",
-    category: "Product · Audience",
     name: "Asian News Aggregator",
     description:
       "Pulls 15+ AAPI news sources and uses Reddit and AI signals to surface what audiences care about — built around audience targeting and content strategy.",
@@ -58,7 +55,6 @@ export const PROJECTS: Project[] = [
   },
   {
     index: "03",
-    category: "AMA · Marketing Report",
     name: "Kyle's Kitchen Marketing Report",
     description:
       "Collegiate marketing report for Kyle's Kitchen — positioning, audience research, and a campaign roadmap built for the American Marketing Association at UCSB.",
@@ -74,7 +70,6 @@ export const PROJECTS: Project[] = [
   },
   {
     index: "04",
-    category: "AMA · Case Competition",
     name: "UCSB × MLB Case Competition",
     description:
       "National MLB marketing case deck covering audience segmentation, fan engagement strategy, and growth opportunities for a younger demographic.",

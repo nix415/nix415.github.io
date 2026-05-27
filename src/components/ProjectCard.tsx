@@ -50,7 +50,6 @@ export interface ProjectCardProps extends React.HTMLAttributes<HTMLElement> {
   link: string;
   linkText?: string;
   index?: string;
-  category?: string;
   stats?: string[];
   secondaryLink?: { href: string; label: string };
   imgPosition?: string;
@@ -67,7 +66,6 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
       link,
       linkText = "Open project",
       index,
-      category,
       stats,
       secondaryLink,
       imgPosition,
@@ -113,11 +111,6 @@ const ProjectCard = React.forwardRef<HTMLElement, ProjectCardProps>(
             {index ? (
               <span className="mono text-[10px] uppercase tracking-[0.25em] text-[color:var(--color-muted)]">
                 {index}
-              </span>
-            ) : null}
-            {category ? (
-              <span className="mono text-[10px] uppercase tracking-[0.25em] text-[color:var(--color-muted)]">
-                {category}
               </span>
             ) : null}
           </div>

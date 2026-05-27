@@ -28,7 +28,6 @@ export default function Home() {
               linkText={p.linkText}
               secondaryLink={p.secondaryLink}
               index={p.index}
-              category={p.category}
               stats={p.stats}
               imgPosition={p.imgPosition}
               imgFit={p.imgFit}
