@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
-import { Home, Moon, Sun } from "lucide-react";
+import { Home } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useActiveSection } from "../hooks/useActiveSection";
-import { useTheme } from "../hooks/useTheme";
 
 type NavLink = {
   id: string;
@@ -19,7 +18,7 @@ const LINKS: NavLink[] = [
 /**
  * Fixed, centered pill nav. Condenses (shrinks padding + raises bg opacity)
  * once the user has scrolled past ~40px. Shows an ink dot on the currently
- * active section and exposes a dark-mode toggle on the right.
+ * active section.
  */
 export default function SiteNav() {
   const [scrolled, setScrolled] = useState(false);
@@ -28,7 +27,6 @@ export default function SiteNav() {
   const navigate = useNavigate();
   const onHome = location.pathname === "/";
   const active = useActiveSection(onHome ? LINKS.map((l) => l.id) : []);
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     let lastY = window.scrollY;
@@ -140,21 +138,6 @@ export default function SiteNav() {
               );
             })}
           </ul>
-
-          <div className="mx-1 h-5 w-px bg-[color:var(--color-line)]" />
-
-          <button
-            type="button"
-            onClick={toggleTheme}
-            className="press inline-flex h-9 w-9 items-center justify-center rounded-full hover:bg-[color:var(--color-line)]/60"
-            aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
-          >
-            {theme === "dark" ? (
-              <Sun className="h-4 w-4" />
-            ) : (
-              <Moon className="h-4 w-4" />
-            )}
-          </button>
         </nav>
       </div>
     </header>

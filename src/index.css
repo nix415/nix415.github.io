@@ -21,15 +21,6 @@
   --color-accent: oklch(0.28 0.015 145);
 }
 
-html.dark {
-  --color-bg: oklch(0.2 0.01 145);
-  --color-surface: oklch(0.26 0.01 145);
-  --color-ink: oklch(0.94 0.008 95);
-  --color-muted: oklch(0.68 0.008 95);
-  --color-line: oklch(0.32 0.01 145);
-  --color-accent: oklch(0.94 0.008 95);
-}
-
 html {
   scroll-behavior: smooth;
   background: var(--color-bg);
