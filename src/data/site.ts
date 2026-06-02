@@ -3,7 +3,7 @@ export const SITE = {
   firstName: "Nixon",
   lastName: "Tse",
 
-  nav: ["Work", "About", "Contact"] as const,
+  nav: ["About", "Work", "Contact"] as const,
 
   availability: "Available · Spring 2026 · Growth & Marketing Analytics",
 

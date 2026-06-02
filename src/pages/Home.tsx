@@ -13,36 +13,6 @@ export default function Home() {
       <Hero />
 
       <Section
-        id="work"
-        eyebrow={SITE.work.eyebrow}
-        title={SITE.work.title}
-      >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
-          {PROJECTS.map((p, i) => (
-            <ProjectCard
-              key={p.name}
-              title={p.name}
-              description={p.description}
-              imgSrc={p.imgSrc}
-              link={p.link}
-              linkText={p.linkText}
-              secondaryLink={p.secondaryLink}
-              index={p.index}
-              stats={p.stats}
-              imgPosition={p.imgPosition}
-              imgFit={p.imgFit}
-              className="stagger-item"
-              style={
-                {
-                  ["--stagger-delay" as never]: `${160 + i * 100}ms`,
-                } as CSSProperties
-              }
-            />
-          ))}
-        </div>
-      </Section>
-
-      <Section
         id="about"
         eyebrow={SITE.about.eyebrow}
         title={SITE.about.title}
@@ -85,6 +55,36 @@ export default function Home() {
               </ul>
             </div>
           ) : null}
+        </div>
+      </Section>
+
+      <Section
+        id="work"
+        eyebrow={SITE.work.eyebrow}
+        title={SITE.work.title}
+      >
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-20">
+          {PROJECTS.map((p, i) => (
+            <ProjectCard
+              key={p.name}
+              title={p.name}
+              description={p.description}
+              imgSrc={p.imgSrc}
+              link={p.link}
+              linkText={p.linkText}
+              secondaryLink={p.secondaryLink}
+              index={p.index}
+              stats={p.stats}
+              imgPosition={p.imgPosition}
+              imgFit={p.imgFit}
+              className="stagger-item"
+              style={
+                {
+                  ["--stagger-delay" as never]: `${160 + i * 100}ms`,
+                } as CSSProperties
+              }
+            />
+          ))}
         </div>
       </Section>
 
