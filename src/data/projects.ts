@@ -44,7 +44,7 @@ export const PROJECTS: Project[] = [
     description:
       "Pulls 15+ AAPI news sources and uses Reddit and AI signals to surface what audiences care about — built around audience targeting and content strategy.",
     imgSrc: "/images/asian-news-aggregator.jpg",
-    link: "https://asian-news-aggregator-git-main-nixontse1-2085s-projects.vercel.app",
+    link: "https://asian-news-aggregator.vercel.app",
     linkText: "Visit site",
     secondaryLink: {
       href: "https://github.com/nix415/asian-news-aggregator",
