@@ -77,7 +77,7 @@ export default function Home() {
               stats={p.stats}
               imgPosition={p.imgPosition}
               imgFit={p.imgFit}
-              className="stagger-item"
+              className={`stagger-item${p.featured ? " md:col-span-2" : ""}`}
               style={
                 {
                   ["--stagger-delay" as never]: `${160 + i * 100}ms`,

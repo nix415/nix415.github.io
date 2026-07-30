@@ -4,6 +4,7 @@ import ScrollProgressBar from "./components/ScrollProgressBar";
 import Home from "./pages/Home";
 import CaseStudyMlb from "./pages/CaseStudyMlb";
 import CaseStudyKylesKitchen from "./pages/CaseStudyKylesKitchen";
+import CaseStudyTrinity from "./pages/CaseStudyTrinity";
 import { SITE } from "./data/site";
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
 
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/work/trinity" element={<CaseStudyTrinity />} />
         <Route path="/work/ucsb-mlb" element={<CaseStudyMlb />} />
         <Route path="/work/kyles-kitchen" element={<CaseStudyKylesKitchen />} />
       </Routes>

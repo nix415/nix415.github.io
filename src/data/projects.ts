@@ -24,6 +24,23 @@ export type Project = {
 export const PROJECTS: Project[] = [
   {
     index: "01",
+    name: "Trinity Interior Design",
+    description:
+      "Built a live marketing site from scratch for a California design studio — then instrumented consultation leads and shop waitlist signups in GA4 so growth is measurable.",
+    imgSrc: "/images/trinity-cover.png",
+    link: "/work/trinity",
+    linkText: "Read case study",
+    secondaryLink: {
+      href: "https://trinityinteriordesignstudio.com",
+      label: "Live site",
+    },
+    stats: ["GA4", "Conversion UX", "Performance"],
+    outcome:
+      "3 conversion events live in Realtime — generate_lead, join_waitlist, click_book_consultation.",
+    featured: true,
+  },
+  {
+    index: "02",
     name: "SQL Marketing Portfolio",
     description:
       "Five SQL analyses on Kaggle's Customer Segmentation Data — acquisition, funnel, cohort retention, revenue ROI, and RFM segmentation. The questions a growth team asks every week.",
@@ -36,10 +53,9 @@ export const PROJECTS: Project[] = [
     },
     outcome:
       "Isolated high-value RFM segments and flagged at-risk customers for re-activation.",
-    featured: true,
   },
   {
-    index: "02",
+    index: "03",
     name: "Asian News Aggregator",
     description:
       "Pulls 15+ AAPI news sources and uses Reddit and AI signals to surface what audiences care about — built around audience targeting and content strategy.",
@@ -54,7 +70,7 @@ export const PROJECTS: Project[] = [
       "Cut hours of manual content sourcing out of the weekly social workflow at Asian Founded.",
   },
   {
-    index: "03",
+    index: "04",
     name: "Kyle's Kitchen Marketing Report",
     description:
       "Collegiate marketing report for Kyle's Kitchen — positioning, audience research, and a campaign roadmap built for the American Marketing Association at UCSB.",
@@ -69,7 +85,7 @@ export const PROJECTS: Project[] = [
       "Delivered a full positioning + campaign roadmap for a UCSB AMA client engagement.",
   },
   {
-    index: "04",
+    index: "05",
     name: "UCSB × MLB Case Competition",
     description:
       "National MLB marketing case deck covering audience segmentation, fan engagement strategy, and growth opportunities for a younger demographic.",

@@ -26,9 +26,9 @@ export const SITE = {
     bio: "One of my deepest joys comes from turning customer curiosity into work people actually notice — across growth marketing, marketing analytics, and small digital experiments.",
     roles: ["Growth Marketing", "Marketing Analytics"] as const,
     currently: [
+      "Shipping GA4 conversion tracking for a live client site",
       "Writing SQL analyses for a 1,000-customer dataset",
       "Reading How Brands Grow — Byron Sharp",
-      "Building an AAPI news aggregator for Asian Founded",
       "Studying Communication at UC Santa Barbara",
     ],
   },
@@ -47,7 +47,7 @@ export const SITE = {
   work: {
     title: "Work",
     eyebrow: "Work",
-    lede: "Three pieces of work, chosen because they each look at growth from a different angle.",
+    lede: "Selected work across growth analytics, marketing strategy, and shipped digital experiments.",
   },
 
   about: {
@@ -130,7 +130,7 @@ export const SITE = {
   },
 
   footer: {
-    updated: "Last updated — Apr 2026",
+    updated: "Last updated — Jul 2026",
   },
 } as const;
 
