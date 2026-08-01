@@ -26,7 +26,7 @@ export const PROJECTS: Project[] = [
     index: "01",
     name: "Trinity Interior Design",
     description:
-      "Built a live marketing site from scratch for a California design studio — then instrumented consultation leads and shop waitlist signups in GA4 so growth is measurable.",
+      "A California design studio had a polished site and no way to tell whether it produced business. I designed the GA4 measurement model alongside the build, so both conversion funnels were readable from launch day.",
     imgSrc: "/images/trinity-cover.png",
     link: "/work/trinity",
     linkText: "Read case study",
@@ -34,9 +34,9 @@ export const PROJECTS: Project[] = [
       href: "https://trinityinteriordesignstudio.com",
       label: "Live site",
     },
-    stats: ["GA4", "Conversion UX", "Performance"],
+    stats: ["GA4", "Tracking plan", "Conversion UX"],
     outcome:
-      "3 conversion events live in Realtime — generate_lead, join_waitlist, click_book_consultation.",
+      "Two funnels mapped to key events — consultation leads and pre-launch waitlist demand — verified firing in Realtime.",
     featured: true,
   },
   {
